@@ -208,3 +208,6 @@ module LS191(LD_,CT_,U_D,CP,D,Q,MM,RCO_);//计数器
             end
     end
 endmodule
+
+
+
