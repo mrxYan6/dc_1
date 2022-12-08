@@ -145,10 +145,66 @@ module digitClock(clk,reset,SW,SET,AN,seg);
 
     always @(*) begin
         case (SW)
-            0:data = tim;
-            1:data = date;
-            2:data = week;
+            0:date = tim;
+            1:date = date;
+            2:date = week;
         endcase
     end
 
+endmodule
+
+
+module main(//译码器
+    input [3:0] cba,
+    input [2:0] _en,//使能端
+    output reg [9:0] Y
+);
+always @(*) begin
+    if(!_en[2]||_en[1]||_en[0])//输入无效部分
+        Y=10'b1111_1111_11;
+    else
+        case(cba)
+            4'b0000:Y=8'b0000_0011;
+            4'b0001:Y=10'b1111_1111_01;
+            4'b0010:Y=10'b1111_1110_11;
+            4'b0011:Y=10'b1111_1101_11;
+            4'b0100:Y=10'b1111_1011_11;
+            4'b0101:Y=10'b1111_0111_11;
+            4'b0110:Y=10'b1110_1111_11;
+            4'b0111:Y=10'b1101_1111_11;
+            4'b1000:Y=10'b1011_1111_11;
+            4'b1001:Y=10'b0111_1111_11;
+            
+        endcase
+end    
+endmodule
+
+module LS191(LD_,CT_,U_D,CP,D,Q,MM,RCO_);//计数器
+    input LD_,CT_,U_D,CP;
+    input [3:0] D;
+    output reg MM=0;
+    output RCO_;
+    output reg [3:0] Q;
+    
+    assign RCO_=CP+CT_+~MM;
+    always @(posedge CP or negedge LD_)
+    begin
+        if(!LD_)
+            Q<=D;
+        else if(CT_)
+            Q<=Q;
+        else
+            if(U_D==0)begin
+                if(Q<=14)begin
+                Q<=Q+1'b1;MM=0;end
+                else if(Q==15)begin
+                Q<=0;MM=1;end
+                end
+            else begin
+                if(Q>=1)begin
+                Q<=Q-1'b1;MM=0;end
+                else if(Q==0)begin
+                Q<=15;MM=1;end
+            end
+    end
 endmodule

@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="D:/OneDrive/programing/digitcircuit/teamwork/project_1/project_1.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/LAYSKY/VSCode/dc_1/digitcircuit/teamwork/project_1/project_1.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="096ea91538904b349c76f52f3815afc8"/>
