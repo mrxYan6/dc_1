@@ -1,28 +1,30 @@
 `timescale 1ns / 1ps
-module digitClock(clk,reset,SW,SET,AN,seg);
-    input clk;
-    input reset;
-    input [1:0]SW;
-    input SET;
-    output [7:0]AN;
-    output [7:0]seg;
-    reg [31:0]date;
-    reg[31:0]tim;
-    reg[31:0]week;
 
-    wire [31:0]out;
-    scan_data utt(reset,out,clk,AN,seg);
-
-    always @(*) begin
-
+module ajxd
+    #(parameter CNT_MAX=20'd999_999)
+    (CP,rst,key,flag);
+    input CP,rst,key;
+    output reg flag;
+    reg [19:0] cnt_20ms;
+    initial cnt_20ms=0;
+    always @(posedge CP)
+    begin
+        if(key==1'd1)
+            cnt_20ms<=20'd0;
+        else if(cnt_20ms==CNT_MAX)
+            cnt_20ms<=CNT_MAX;
+        else
+            cnt_20ms<=cnt_20ms+20'd1;
     end
-
-    always @(*) begin
-        case (SW)
-            0:date = tim;
-            1:date = date;
-            2:date = week;
-        endcase
+    
+    always@ (posedge CP)
+    begin
+        if(rst==1'd0)
+            flag<=1'd1;
+        else if(cnt_20ms==CNT_MAX-20'd1)
+            flag<=1'd1;
+        else
+            flag<=1'd0;
     end
-
+    
 endmodule
