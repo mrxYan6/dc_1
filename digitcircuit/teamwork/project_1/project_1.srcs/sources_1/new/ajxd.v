@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 
-module ajxd
+module button
     #(parameter CNT_MAX=20'd999_999)
-    (CP,rst,key,flag);
-    input CP,rst,key;
-    output reg flag;
+    (CP,IN,OUT);
+    input CP,IN;
+    output reg OUT;
     reg [19:0] cnt_20ms;
     initial cnt_20ms=0;
     always @(posedge CP)
     begin
-        if(key==1'd1)
+        if(IN==1'd1)
             cnt_20ms<=20'd0;
         else if(cnt_20ms==CNT_MAX)
             cnt_20ms<=CNT_MAX;
@@ -20,11 +20,11 @@ module ajxd
     always@ (posedge CP)
     begin
         if(rst==1'd0)
-            flag<=1'd1;
+            OUT<=1'd1;
         else if(cnt_20ms==CNT_MAX-20'd1)
-            flag<=1'd1;
+            OUT<=1'd1;
         else
-            flag<=1'd0;
+            OUT<=1'd0;
     end
     
 endmodule
