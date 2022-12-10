@@ -19,9 +19,7 @@ module button
     
     always@ (posedge CP)
     begin
-        if(rst==1'd0)
-            OUT<=1'd1;
-        else if(cnt_20ms==CNT_MAX-20'd1)
+        if(cnt_20ms==CNT_MAX-20'd1)
             OUT<=1'd1;
         else
             OUT<=1'd0;

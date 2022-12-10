@@ -9,16 +9,16 @@ module Clock(clk,reset,EN,SW,SET,AN,seg);
     output [7:0]AN;
     output [7:0]seg;
     
-    wire [7:0]hour,minute,second;
-    wire [7:0]hour_alarm,minute_alarm,second_alarm;
-    wire [7,0]weekday;
+    reg [7:0]hour,minute,second;
+    reg [7:0]hour_alarm,minute_alarm,second_alarm;
+    reg [7:0]weekday;
 
     wire [7:0]hour_now,minute_now,second_now;
-    wire [7:0]hour_aSlarm_now,minute_alarm_now,second_alarm_now;
+    wire [7:0]hour_alarm_now,minute_alarm_now,second_alarm_now;
     wire [7:0]hour_toset,minute_toset,second_toset;
     wire [7:0]hour_alarm_toset,minute_alarm_toset,second_alarm_toset;
-    wire [7,0]weekday_now;
-    wire [7,0]weekday_toset;
+    wire [7:0]weekday_now;
+    wire [7:0]weekday_toset;
 
     wire CP_1S;
     wire CO1,CO2,CO3,CO4;
@@ -35,7 +35,7 @@ module Clock(clk,reset,EN,SW,SET,AN,seg);
     always @(*) begin
         case (SW)
             0 : out = {hour,4'd10,minute,4'd10,second};
-            1 : out = {28'd0,weekday};
+            1 : out = {24'd0,weekday};
             2 : out = {hour_alarm,4'd10,minute_alarm,4'd10,second_alarm};
         endcase
     end

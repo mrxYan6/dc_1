@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Sat Dec 10 21:28:03 2022
+# Process ID: 10300
+# Current directory: D:/OneDrive/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log Clock.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Clock.tcl
+# Log file: D:/OneDrive/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.runs/synth_1/Clock.vds
+# Journal file: D:/OneDrive/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Clock.tcl -notrace

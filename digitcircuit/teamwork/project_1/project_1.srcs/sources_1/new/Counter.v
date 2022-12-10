@@ -18,7 +18,7 @@ module Counter(LD,EN,CP,LMT,D,Q,CO);
                 if(Q + 1'b1 == LMT )begin
                     Q <= 8'b0;
                     CO <= 1;
-                else begin 
+                end else begin 
                     Q <= Q + 1'b1;
                     CO <= 0;
                 end
