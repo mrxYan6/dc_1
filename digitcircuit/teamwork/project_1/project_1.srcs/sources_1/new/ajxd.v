@@ -26,10 +26,3 @@ module digitClock(clk,reset,SW,SET,AN,seg);
     end
 
 endmodule
-
-
-
-
-
-
-
