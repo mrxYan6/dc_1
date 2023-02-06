@@ -1,8 +1,9 @@
 `timescale 1ns / 1ps
 
-module scan_data(reset,data,clk,AN,seg);
-    output [7:0]AN;
+module scan_data(reset,data,clk,EN,an,seg);
+    output [7:0]an;
     output [7:0]seg;
+    input [7:0]EN;
     input reset;
     input clk;
     input [31:0]data;
@@ -20,7 +21,7 @@ module scan_data(reset,data,clk,AN,seg);
     end
 
     reg [3:0]data_in;
-    show(data_in,select,AN,seg);
+    show(data_in,select,EN,an,seg);
     always @(*) begin
         case (select)
             7: data_in = data[31:28];
@@ -36,24 +37,29 @@ module scan_data(reset,data,clk,AN,seg);
 endmodule
 
 
-module show(data,seletct,AN,seg);
+module show(data,seletct,EN,AN,seg);
     input [3:0]data;
     input [2:0]seletct;
-    output reg [7:0]AN;
+    input [7:0]EN;
+    reg [7:0]an;
+    output reg[7:0]AN;
     output reg [7:0]seg;
+
+    always @(*)begin
+        AN = an | EN;
+    end
 
     always @(*) begin
         case(seletct) 
-            0:AN = 8'b11111110;
-            1:AN = 8'b11111101;
-            2:AN = 8'b11111011;
-            3:AN = 8'b11110111;
-            4:AN = 8'b11101111;
-            5:AN = 8'b11011111;
-            6:AN = 8'b10111111;
-            7:AN = 8'b01111111;
-
-            default: AN = 8'Hff;
+            0:an = 8'b11111110;
+            1:an = 8'b11111101;
+            2:an = 8'b11111011;
+            3:an = 8'b11110111;
+            4:an = 8'b11101111;
+            5:an = 8'b11011111;
+            6:an = 8'b10111111;
+            7:an = 8'b01111111;
+            default: an = 8'Hff;
         endcase
     end
 
@@ -75,7 +81,6 @@ module show(data,seletct,AN,seg);
             // 13:seg = 8'b10000101;
             // 14:seg = 8'b01100001;
             // 15:seg = 8'b01110001;
-
             default:seg = 8'Hff;
         endcase
     end
