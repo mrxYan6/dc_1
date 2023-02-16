@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/OneDrive/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Translator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decoder
+INFO: [VRFC 10-311] analyzing module bin_BCD
+INFO: [VRFC 10-311] analyzing module shift_add3
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/OneDrive/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sim_1/new/simulation_decoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simulation_decoder

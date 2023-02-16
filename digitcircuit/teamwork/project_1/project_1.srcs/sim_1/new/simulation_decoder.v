@@ -21,7 +21,18 @@
 
 
 module simulation_decoder();
-
     
+    reg [7:0] bin;
+    wire [7:0] ans;
 
+    decoder utt(bin,ans);
+
+    initial begin
+        bin = 0;
+    end
+
+    always @(*)begin
+        #20
+        bin <= bin + 1;
+    end
 endmodule

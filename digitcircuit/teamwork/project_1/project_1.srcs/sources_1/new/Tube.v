@@ -1,9 +1,8 @@
 `timescale 1ns / 1ps
 
-module scan_data(reset,data,clk,EN,an,seg);
+module scan_data(reset,data,clk,an,seg);
     output [7:0]an;
     output [7:0]seg;
-    input [7:0]EN;
     input reset;
     input clk;
     input [31:0]data;
@@ -37,17 +36,12 @@ module scan_data(reset,data,clk,EN,an,seg);
 endmodule
 
 
-module show(data,seletct,EN,AN,seg);
+module show(data,seletct,AN,seg);
     input [3:0]data;
     input [2:0]seletct;
-    input [7:0]EN;
-    reg [7:0]an;
     output reg[7:0]AN;
     output reg [7:0]seg;
-
-    always @(*)begin
-        AN = an | EN;
-    end
+    reg [7:0]an;
 
     always @(*) begin
         case(seletct) 
