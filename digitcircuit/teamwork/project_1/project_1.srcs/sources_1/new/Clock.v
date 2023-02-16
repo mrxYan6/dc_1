@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG);
+module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG,IN);
     input CLK;
     input reset;
     input EN;
@@ -9,6 +9,7 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG);
     output [7:0]AN;
     output [7:0]SEG;
     input NEXT_CP_ini;
+    input [7:0]IN;
 
     reg [7:0]hour,minute,second,weekday,hour_alarm,minute_alarm;
 
@@ -57,18 +58,18 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG);
         begin
             case(TYPE)
                 1 : ori = 8'h1;
-                2 : begin
-                        case(MODE)begin
+                2 : 
+                       case(MODE)
                         0:ori = 8'b01100000;
                         1:ori = 8'b00000110;
-                        end
-                end
+                        endcase
+           
                 default : 
-                case(MODE)begin
+                case(MODE)
                     0:ori = 8'b11000000;
                     1:ori = 8'b00011000;
                     2:ori = 8'b00000011;
-                end
+                endcase
             endcase
         end else begin
             ori = 8'd0;
@@ -93,7 +94,6 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG);
             weekday = weekday_toset;
             hour_alarm = hour_alarm_toset;
             minute_alarm = minute_alarm_toset;
-            second_alarm = second_alarm_toset;
         end else begin
             hour = hour_now;
             minute = minute_now;
@@ -101,7 +101,6 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG);
             weekday = weekday_now;
             hour_alarm = hour_alarm_now;
             minute_alarm = minute_alarm_now;
-            second_alarm = second_alarm_now;
         end
     end
 endmodule
