@@ -67,7 +67,7 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
         end
     end
     
-    ori =   TYPE ?
+    assign ori =   TYPE ?
                 (MODE0 == 0) ?  8'b00000011
                 :(MODE0 == 1) ?  8'b00001100
                 :(MODE0 == 2) ?  8'b00110000
