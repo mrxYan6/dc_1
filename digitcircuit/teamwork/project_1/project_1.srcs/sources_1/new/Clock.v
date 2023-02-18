@@ -10,7 +10,7 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
     input [7:0]IN;      //输入的数字（开关）
     output [7:0]AN;     //输出的数码管使能端信号
     output [7:0]SEG;    //输出的数码管信号
-    output [7:0]alert;  //灯，表示闹钟到了    
+    output [7:0]alert;  //灯，表示闹钟到了
 
     //mode0：时钟 w-hhmmss
     //mode1：闹钟 -hh--mm-
@@ -36,6 +36,11 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
     Counter minu(LD,EN,CO1,8'd60,minute_toset,minute_now,CO2);
     Counter hou(LD,EN,CO2,8'd24,hour_toset,hour_now,CO3);
     Counter week(LD,EN,CO3,8'd7,weekday_toset,weekday_now,CO);
+
+    Counter sec1(LD,EN,CP_1S,8'd60,second_now,8'b0,CO1);
+    Counter minu1(LD,EN,CO1,8'd60,minute_now,minute_toset,CO2);
+    Counter hou1(LD,EN,CO2,8'd24,hour_now,hour_toset,CO3);
+    Counter week1(LD,EN,CO3,8'd7,weekday_now,weekday_toset,CO);
 
     wire [7:0] h,m,s,ha,ma,w;
     
@@ -69,7 +74,6 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
                 :8'b10000000
             :(MODE1)? 8'b00000110
                 :8'b01100000;
-                            
 
 
     wire [7:0]an;
