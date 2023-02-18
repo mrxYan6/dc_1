@@ -12,12 +12,13 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
     output [7:0]SEG;    //输出的数码管信号
     output [7:0]alert;  //灯，表示闹钟到了    
 
-    //mode0：闹钟 -hh--mm-
-    //mode1：时钟 w-hhmmss
+    //mode0：时钟 w-hhmmss
+    //mode1：闹钟 -hh--mm-
     reg [7:0]hour,minute,second,weekday,hour_alarm,minute_alarm;
 
-    reg [1:0]MODE,PREV;
-
+    reg [1:0]MODE0;//00->ss,01->mm,10->hh,11->w
+    reg MODE1;//0->mm,1->hh
+    
     wire [7:0]hour_now,minute_now,second_now,weekday_now,hour_alarm_now,minute_alarm_now;
     wire [7:0]hour_toset,minute_toset,second_toset,weekday_toset,hour_alarm_toset,minute_alarm_toset;
 
@@ -49,24 +50,27 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
     assign out = TYPE?{w[3:0],4'hf,h,m,s}:{4'hf,ha,4'hf,4'hf,ma,4'hf};
 
     wire [7:0] EN_TUBE;
-    reg[7:0] ori;
+    wire [7:0] ori;
 
     always @(posedge SET or posedge NEXT_CP)begin
         if(SET)begin
-            MODE <= 0;
+            MODE0 <= 0;
+            MODE1 <= 0;
         end else begin
+            if(TYPE)MODE1 = MODE1 + 1;
+            else MODE0 = MODE0 + 1;
         end
     end
     
+    ori =   TYPE ?
+                (MODE0 == 0) ?  8'b00000011
+                :(MODE0 == 1) ?  8'b00001100
+                :(MODE0 == 2) ?  8'b00110000
+                :8'b10000000
+            :(MODE1)? 8'b00000110
+                :8'b01100000;
+                            
 
-    always @(*) begin
-        if (SET)
-        begin
-            
-        end else begin
-            ori = 8'd0;
-        end
-    end
 
     wire [7:0]an;
     scan_data utt(LD,out,CLK,AN,SEG);
