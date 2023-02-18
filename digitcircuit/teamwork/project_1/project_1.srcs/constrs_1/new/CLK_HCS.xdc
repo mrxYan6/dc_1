@@ -16,7 +16,7 @@ set_property PACKAGE_PIN U9 [get_ports {IN[0]}]
 set_property PACKAGE_PIN V15 [get_ports SET]
 set_property PACKAGE_PIN R15 [get_ports TYPE]
 set_property PACKAGE_PIN U16 [get_ports EN]
-//数码管
+//数码管 
 set_property IOSTANDARD LVCMOS18 [get_ports {AN[7]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {AN[6]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {AN[5]}]
