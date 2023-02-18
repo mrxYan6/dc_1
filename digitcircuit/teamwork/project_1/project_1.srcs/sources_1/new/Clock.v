@@ -1,14 +1,15 @@
 `timescale 1ns / 1ps
 
-module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG,alert);
+module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
     input CLK;          //输入的时钟信号
     input reset;        //清零（按钮）
     input EN;           //是否开始
     input TYPE;         //显示及设置模式（开关）
+    input NEXT_CP_ini;  //设置时下一个（按钮）
     input SET;          //是否为输入模式（开关）
+    input [7:0]IN;      //输入的数字（开关）
     output [7:0]AN;     //输出的数码管使能端信号
     output [7:0]SEG;    //输出的数码管信号
-    input NEXT_CP_ini;  //设置时下一个（按钮）
     output [7:0]alert;  //灯，表示闹钟到了    
 
     //mode0：闹钟 -hh--mm-
@@ -72,22 +73,24 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG,alert);
 
 
     assign AN = SET & CP_500MS ? an | ori: an;
+    //如果在set状态，500ms闪烁一次，通过屎能信号来实现
 
-    always @(*) begin
-        if (SET)begin
-            hour = hour_toset;
-            minute = minute_toset;
-            second = second_toset;
-            weekday = weekday_toset;
-            hour_alarm = hour_alarm_toset;
-            minute_alarm = minute_alarm_toset;
-        end else begin
-            hour = hour_now;
-            minute = minute_now;
-            second = second_now;
-            weekday = weekday_now;
-            hour_alarm = hour_alarm_now;
-            minute_alarm = minute_alarm_now;
-        end
-    end
+    
+    // always @(*) begin
+    //     if (SET)begin
+    //         hour = hour_toset;
+    //         minute = minute_toset;
+    //         second = second_toset;
+    //         weekday = weekday_toset;
+    //         hour_alarm = hour_alarm_toset;
+    //         minute_alarm = minute_alarm_toset;
+    //     end else begin
+    //         hour = hour_now;
+    //         minute = minute_now;
+    //         second = second_now;
+    //         weekday = weekday_now;
+    //         hour_alarm = hour_alarm_now;
+    //         minute_alarm = minute_alarm_now;
+    //     end
+    // end
 endmodule
