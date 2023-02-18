@@ -1,9 +1,9 @@
 //CLK
 set_property -dict {IOSTANDARD LVCMOS18 PACKAGE_PIN E3} [get_ports CLK]
-//°´¼ü
+//æŒ‰é”®
 set_property PACKAGE_PIN N17 [get_ports reset]
 set_property PACKAGE_PIN P18 [get_ports NEXT_CP_ini]
-//Êı×ÖÊäÈë
+//æ•°å­—è¾“å…¥
 set_property PACKAGE_PIN V5 [get_ports {IN[7]}]
 set_property PACKAGE_PIN T4 [get_ports {IN[6]}]
 set_property PACKAGE_PIN V6 [get_ports {IN[5]}]
@@ -12,11 +12,11 @@ set_property PACKAGE_PIN T6 [get_ports {IN[3]}]
 set_property PACKAGE_PIN V7 [get_ports {IN[2]}]
 set_property PACKAGE_PIN R8 [get_ports {IN[1]}]
 set_property PACKAGE_PIN U9 [get_ports {IN[0]}]
-//¿ª¹Ø
+//å¼€å…³
 set_property PACKAGE_PIN V15 [get_ports SET]
 set_property PACKAGE_PIN R15 [get_ports TYPE]
 set_property PACKAGE_PIN U16 [get_ports EN]
-//ÊıÂë¹ÜÏÔÊ¾
+//æ•°ç ç®¡
 set_property IOSTANDARD LVCMOS18 [get_ports {AN[7]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {AN[6]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {AN[5]}]
