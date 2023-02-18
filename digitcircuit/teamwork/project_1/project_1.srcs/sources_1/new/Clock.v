@@ -4,13 +4,15 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG,alert);
     input CLK;          //输入的时钟信号
     input reset;        //清零（按钮）
     input EN;           //是否开始
-    input [1:0]TYPE;    //显示及设置模式（开关）
+    input TYPE;         //显示及设置模式（开关）
     input SET;          //是否为输入模式（开关）
     output [7:0]AN;     //输出的数码管使能端信号
     output [7:0]SEG;    //输出的数码管信号
     input NEXT_CP_ini;  //设置时下一个（按钮）
     output [7:0]alert;  //灯，表示闹钟到了    
 
+    //mode0：闹钟 -hh--mm-
+    //mode1：时钟 w-hhmmss
     reg [7:0]hour,minute,second,weekday,hour_alarm,minute_alarm;
 
     reg [1:0]MODE,PREV;
@@ -37,22 +39,16 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG,alert);
     
     decoder u1(hour,h);
     decoder u2(minute,m);
-    decoder u1(second,s);
-    decoder u1(hour_alarm,ha);
-    decoder u1(minute_alarm,ma);
-    decoder u1(weekday,w);
+    decoder u3(second,s);
+    decoder u4(hour_alarm,ha);
+    decoder u5(minute_alarm,ma);
+    decoder u6(weekday,w);
 
-    reg [31:0]out;
-    always @(*) begin
-        case (TYPE)
-            1 : out = {28'hfffffff,w[3:0]};
-            2 : out = {4'hf,ha,4'hf,4'hf,ma,4'hf};
-            default : out = {h,4'hf,m,4'hf,s};
-        endcase
-    end
-    
+    wire [31:0]out;
+    assign out = TYPE?{w[3:0],4'hf,h,m,s}:{4'hf,ha,4'hf,4'hf,ma,4'hf};
 
-    reg [7:0]EN_TUBE,ori;
+    wire [7:0] EN_TUBE;
+    reg[7:0] ori;
 
     always @(posedge SET or posedge NEXT_CP)begin
         if(SET)begin
@@ -65,33 +61,17 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,AN,SEG,alert);
     always @(*) begin
         if (SET)
         begin
-            case(TYPE)
-                1 : ori = 8'h1;
-                2 : case(MODE)
-                        0:ori = 8'b01100000;
-                        1:ori = 8'b00000110;
-                    endcase
-                default : 
-                case(MODE)
-                    0:ori = 8'b11000000;
-                    1:ori = 8'b00011000;
-                    2:ori = 8'b00000011;
-                endcase
-            endcase
+            
         end else begin
             ori = 8'd0;
         end
     end
 
-    always @(*) begin
-        if (SET) begin
-            EN_TUBE = ori & CP_500MS;
-        end else begin
-            EN_TUBE = ori;
-        end
-    end
-
+    wire [7:0]an;
     scan_data utt(LD,out,CLK,AN,SEG);
+
+
+    assign AN = SET & CP_500MS ? an | ori: an;
 
     always @(*) begin
         if (SET)begin

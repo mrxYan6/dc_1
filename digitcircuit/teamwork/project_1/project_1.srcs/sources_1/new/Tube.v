@@ -70,11 +70,6 @@ module show(data,seletct,AN,seg);
 			8:seg = 8'b00000001;
 			9:seg = 8'b00001001;
             10:seg = 8'b11111101;
-            // 11:seg = 8'b11000001;
-            // 12:seg = 8'b01100011; 
-            // 13:seg = 8'b10000101;
-            // 14:seg = 8'b01100001;
-            // 15:seg = 8'b01110001;
             default:seg = 8'Hff;
         endcase
     end
