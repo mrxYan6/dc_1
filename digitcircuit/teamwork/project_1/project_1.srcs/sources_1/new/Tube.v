@@ -20,7 +20,7 @@ module scan_data(reset,data,clk,an,seg);
     end
 
     reg [3:0]data_in;
-    show(data_in,select,EN,an,seg);
+    show(data_in,select,an,seg);
     always @(*) begin
         case (select)
             7: data_in = data[31:28];
