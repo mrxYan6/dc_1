@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "../../sources_1/new/Translator.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -28,7 +29,11 @@ module simulation_decoder();
     decoder utt(bin,ans);
 
     initial begin
+        $display("start a clock pulse");    // 打印开始标记
+        $dumpfile("wave.vcd");              // 指定记录模拟波形的文件
+        $dumpvars(0, simulation_decoder);          // 指定记录的模块层级
         bin = 0;
+        #6000 $finish;                      // 6000个单位时间后结束模拟
     end
 
     always @(*)begin
