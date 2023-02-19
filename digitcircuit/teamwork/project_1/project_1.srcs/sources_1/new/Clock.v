@@ -26,7 +26,7 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
     wire CP_1S,CP_500MS;
     wire CO1,CO2,CO3,CO4;
     wire rst,NEXT_CP,SURE;
-    wire [3:0]LD
+    wire [3:0]LD;
     button but1(CLK,reset,rst);
     button but2(CLK,NEXT_ini,NEXT_CP);
     button but3(CLK,MODIFY,SURE);
@@ -34,10 +34,10 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
     Fdiv div1s(rst,32'd50000000,CLK,CP_1S);
     Fdiv div500ms(rst,32'd25000000,CLK,CP_500MS);
 
-    Counter sec(rst,LD[0],EN,CP_1S,8'd60,second_toset,second_now,CO1);
-    Counter minu(rst,LD[1],EN,CO1,8'd60,minute_toset,minute_now,CO2);
-    Counter hou(rst,LD[2],EN,CO2,8'd24,hour_toset,hour_now,CO3);
-    Counter week(rst,LD[3],EN,CO3,8'd7,weekday_toset,weekday_now,CO);
+    Counter sec(rst,LD[0],EN,CP_1S,8'd60,IN,second_now,CO1);
+    Counter minu(rst,LD[1],EN,CO1,8'd60,IN,minute_now,CO2);
+    Counter hou(rst,LD[2],EN,CO2,8'd24,IN,hour_now,CO3);
+    Counter week(rst,LD[3],EN,CO3,8'd7,IN,weekday_now,CO);
 
     // Counter sec1(LD,EN,CP_1S,8'd60,second_now,8'b0,CO1);
     // Counter minu1(LD,EN,CO1,8'd60,minute_now,minute_toset,CO2);
