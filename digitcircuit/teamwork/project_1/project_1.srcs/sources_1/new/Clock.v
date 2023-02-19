@@ -1,12 +1,13 @@
 `timescale 1ns / 1ps
 
-module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
+module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
     input CLK;          //输入的时钟信号
     input reset;        //清零（按钮）
     input EN;           //是否开始
     input TYPE;         //显示及设置模式（开关）
     input NEXT_CP_ini;  //设置时下一个（按钮）
     input SET;          //是否为输入模式（开关）
+    input MODIFY;       //输入模式时确定输入
     input [7:0]IN;      //输入的数字（开关）
     output [7:0]AN;     //输出的数码管使能端信号
     output [7:0]SEG;    //输出的数码管信号
@@ -24,23 +25,24 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
 
     wire CP_1S,CP_500MS;
     wire CO1,CO2,CO3,CO4;
-    wire LD,NEXT_CP;
-
-    button but1(CLK,reset,LD);
+    wire rst,NEXT_CP,SURE;
+    wire [3:0]LD
+    button but1(CLK,reset,rst);
     button but2(CLK,NEXT_ini,NEXT_CP);
+    button but3(CLK,MODIFY,SURE);
 
-    Fdiv div1s(LD,32'd50000000,CLK,CP_1S);
-    Fdiv div500ms(LD,32'd25000000,CLK,CP_500MS);
+    Fdiv div1s(rst,32'd50000000,CLK,CP_1S);
+    Fdiv div500ms(rst,32'd25000000,CLK,CP_500MS);
 
-    Counter sec(LD,EN,CP_1S,8'd60,second_toset,second_now,CO1);
-    Counter minu(LD,EN,CO1,8'd60,minute_toset,minute_now,CO2);
-    Counter hou(LD,EN,CO2,8'd24,hour_toset,hour_now,CO3);
-    Counter week(LD,EN,CO3,8'd7,weekday_toset,weekday_now,CO);
+    Counter sec(rst,LD[0],EN,CP_1S,8'd60,second_toset,second_now,CO1);
+    Counter minu(rst,LD[1],EN,CO1,8'd60,minute_toset,minute_now,CO2);
+    Counter hou(rst,LD[2],EN,CO2,8'd24,hour_toset,hour_now,CO3);
+    Counter week(rst,LD[3],EN,CO3,8'd7,weekday_toset,weekday_now,CO);
 
-    Counter sec1(LD,EN,CP_1S,8'd60,second_now,8'b0,CO1);
-    Counter minu1(LD,EN,CO1,8'd60,minute_now,minute_toset,CO2);
-    Counter hou1(LD,EN,CO2,8'd24,hour_now,hour_toset,CO3);
-    Counter week1(LD,EN,CO3,8'd7,weekday_now,weekday_toset,CO);
+    // Counter sec1(LD,EN,CP_1S,8'd60,second_now,8'b0,CO1);
+    // Counter minu1(LD,EN,CO1,8'd60,minute_now,minute_toset,CO2);
+    // Counter hou1(LD,EN,CO2,8'd24,hour_now,hour_toset,CO3);
+    // Counter week1(LD,EN,CO3,8'd7,weekday_now,weekday_toset,CO);
 
     wire [7:0] h,m,s,ha,ma,w;
     
@@ -67,6 +69,11 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
         end
     end
     
+    always @(*)begin
+            
+    end
+
+
     assign ori =   TYPE ?
                 (MODE0 == 0) ?  8'b00000011
                 :(MODE0 == 1) ?  8'b00001100
@@ -77,7 +84,7 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,IN,AN,SEG,alert);
 
 
     wire [7:0]an;
-    scan_data utt(LD,out,CLK,AN,SEG);
+    scan_data utt(rst,out,CLK,AN,SEG);
 
 
     assign AN = SET & CP_500MS ? an | ori: an;
