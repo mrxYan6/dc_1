@@ -21,12 +21,13 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
     reg MODE1;//0->mm,1->hh
     
     wire [7:0]hour_now,minute_now,second_now,weekday_now,hour_alarm_now,minute_alarm_now;
-    wire [7:0]hour_toset,minute_toset,second_toset,weekday_toset,hour_alarm_toset,minute_alarm_toset;
+    // wire [7:0]hour_toset,minute_toset,second_toset,weekday_toset,hour_alarm_toset,minute_alarm_toset;
 
     wire CP_1S,CP_500MS;
     wire CO1,CO2,CO3,CO4;
     wire rst,NEXT_CP,SURE;
-    wire [3:0]LD;
+    reg [3:0]LD;
+    reg  [1:0]LD2;
     button but1(CLK,reset,rst);
     button but2(CLK,NEXT_ini,NEXT_CP);
     button but3(CLK,MODIFY,SURE);
@@ -34,10 +35,25 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
     Fdiv div1s(rst,32'd50000000,CLK,CP_1S);
     Fdiv div500ms(rst,32'd25000000,CLK,CP_500MS);
 
-    Counter sec(rst,LD[0],EN,CP_1S,8'd60,IN,second_now,CO1);
+    Counter sec(rst,LD[0],EN,CP_1S,8'd60,8'd0,second_now,CO1);
     Counter minu(rst,LD[1],EN,CO1,8'd60,IN,minute_now,CO2);
     Counter hou(rst,LD[2],EN,CO2,8'd24,IN,hour_now,CO3);
-    Counter week(rst,LD[3],EN,CO3,8'd7,IN,weekday_now,CO);
+    Counter week(rst,LD[3],EN,CO3,8'd7,IN,weekday_now, );
+
+    //不进位
+    Counter h_a(rst,LD2[1],EN, ,8'd24,IN,hour_alarm_now, );
+    Counter m_a(rst,LD2[0],EN, ,8'd60,IN,minute_alarm_now, );
+
+
+
+    always @(*)begin
+        hour = hour_now;
+        minute = minute_now;
+        second = second_now;
+        weekday = weekday_now;
+        hour_alarm = hour_alarm_now;
+        minute_alarm = minute_alarm_now;
+    end
 
     // Counter sec1(LD,EN,CP_1S,8'd60,second_now,8'b0,CO1);
     // Counter minu1(LD,EN,CO1,8'd60,minute_now,minute_toset,CO2);
@@ -63,17 +79,30 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
         if(SET)begin
             MODE0 <= 0;
             MODE1 <= 0;
+        end else if(!MODIFY) begin
+            if(TYPE)MODE1 <= MODE1 + 1;
+            else MODE0 <= MODE0 + 1;
         end else begin
-            if(TYPE)MODE1 = MODE1 + 1;
-            else MODE0 = MODE0 + 1;
+            MODE0 <= MODE0;
+            MODE1 <= MODE1;
         end
     end
     
+    //产生置数信号
     always @(*)begin
-            
+        if(SET)begin
+            if(TYPE)begin
+                LD2[MODE1] = MODIFY;
+            end else begin
+                LD[MODE0] = MODIFY;
+            end
+        end else begin
+            LD = 4'd0;
+            LD2 = 2'd0;
+        end
     end
 
-
+    //辅助产生位选信号
     assign ori =   TYPE ?
                 (MODE0 == 0) ?  8'b00000011
                 :(MODE0 == 1) ?  8'b00001100
@@ -91,21 +120,4 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
     //如果在set状态，500ms闪烁一次，通过屎能信号来实现
 
     
-    // always @(*) begin
-    //     if (SET)begin
-    //         hour = hour_toset;
-    //         minute = minute_toset;
-    //         second = second_toset;
-    //         weekday = weekday_toset;
-    //         hour_alarm = hour_alarm_toset;
-    //         minute_alarm = minute_alarm_toset;
-    //     end else begin
-    //         hour = hour_now;
-    //         minute = minute_now;
-    //         second = second_now;
-    //         weekday = weekday_now;
-    //         hour_alarm = hour_alarm_now;
-    //         minute_alarm = minute_alarm_now;
-    //     end
-    // end
 endmodule
