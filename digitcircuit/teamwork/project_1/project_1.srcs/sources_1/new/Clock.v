@@ -17,8 +17,8 @@ module Clock(CLK,reset,EN,TYPE,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert);
     //mode1：闹钟 -hh--mm-
     reg [7:0]hour,minute,second,weekday,hour_alarm,minute_alarm;
 
-    reg [1:0]MODE0;//00->ss,01->mm,10->hh,11->w
-    reg MODE1;//0->mm,1->hh
+    reg [1:0]MODE0;     //00->ss,01->mm,10->hh,11->w
+    reg MODE1;          //0->mm,1->hh
     
     wire [7:0]hour_now,minute_now,second_now,weekday_now,hour_alarm_now,minute_alarm_now;
     // wire [7:0]hour_toset,minute_toset,second_toset,weekday_toset,hour_alarm_toset,minute_alarm_toset;
