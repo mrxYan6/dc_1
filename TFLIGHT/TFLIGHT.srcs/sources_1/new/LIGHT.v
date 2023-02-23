@@ -71,7 +71,7 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
             clock <= clock;
         end else if(start)begin
             if(clock == 70)begin        //主干道绿
-                clock <= clk - 1;
+                clock <= clock - 1;
                 MainLight <= 3'b001;    
                 SubLight <= 3'b100;
                 data_main <= 8'd35;
@@ -81,9 +81,28 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
                 MainLight <= 3'b010;
                 SubLight <= 3'b100;
                 data_main <= 8'd5;
-                data_sub <= data_sub - 8'd1;
+                data_sub <= data_sub - 1;
             end else if(clock == 30)begin
-                
+                clock <= clock - 1;
+                MainLight <= 3'b100;
+                SubLight <= 3'b001;
+                data_main <= 8'd30;
+                data_sub <= 8'd25;
+            end else if(clock == 5)begin
+                clock <= clock - 1;
+                MainLight <= 3'b100;
+                SubLight <= 3'b010;
+                data_main <= data_main -1;
+                data_sub <= 8'd5;
+            end else if(clock == 1)begin
+                clock <= 70;
+                data_main <= data_main - 1;
+                data_sub <= data_sub - 1;
+            end else 
+            begin
+                clock <= clock - 1;
+                data_main <= data_main - 1;
+                data_sub <= data_sub - 1;
             end
         end
     end

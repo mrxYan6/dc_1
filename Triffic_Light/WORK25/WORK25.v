@@ -61,32 +61,32 @@ module Light(clk,clr,start,stopa,stopb,pause,r1,g1,y1,r2,g2,y2,Data);
 				if(clock==70)//四个状态加起来70s
 					begin
 						clock<=clock-1'd1;
-						r1<=0;g1<=1;y1<=0;
-						r2<=1;g2<=0;y2<=0;
+						r1<=0;y1<=0;g1<=1;
+						r2<=1;y2<=0;g2<=0;
 						Data[15:8]<=35;	//g1亮35s
 						Data[7:0]<=40;		//r2亮40s
 					end
 				else if(clock==35)
 					begin
 						clock<=clock-1'd1;
-						r1<=0;g1<=0;y1<=1;
-						r2<=1;g2<=0;y2<=0;
+						r1<=0;y1<=1;g1<=0;
+						r2<=1;y2<=0;g2<=0;
 						Data[15:8]<=5;		//y1亮5s
 						Data[7:0]<=Data[7:0]-8'd1;  //r2还剩5s
 					end
 				else if(clock==30)
 					begin
 						clock<=clock-1'd1;
-						r1<=1;g1<=0;y1<=0;
-						r2<=0;g2<=1;y2<=0;
+						r1<=1;y1<=0;g1<=0;
+						r2<=0;y2<=0;g2<=1;
 						Data[15:8]<=30;		//r1亮30s
 						Data[7:0]<=25;			//g2亮25s
 					end
 				else if(clock==5)
 					begin
 						clock<=clock-1'd1;
-						r1<=1;g1<=0;y1<=0;
-						r2<=0;g2<=0;y2<=1;
+						r1<=1;y1<=0;g1<=0;
+						r2<=0;y2<=1;g2<=0;
 						Data[15:8]<=Data[15:8]-1'd1;	//r1还剩5s
 						Data[7:0]<=5;			//y2亮5s
 					end
