@@ -24,7 +24,7 @@ module decoder(bin,BCD);
     always@(*)begin
         if(prev_bin[7:0] != bin[7:0])begin
             tmp = {8'b0,bin};
-            prev_bin <= bin;
+            prev_bin = bin;
             i = 0;        
             for(i = 0; i < 8; i = i + 1)begin
                 if(tmp[15:12] > 4) tmp[15:12] = tmp[15:12] + 3;

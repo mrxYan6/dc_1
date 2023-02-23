@@ -15,35 +15,7 @@ module WORK25(clk,clr,start,stopa,stopb,pause,r1,g1,y1,r2,g2,y2,AN,Seg);
 endmodule
 
 
-//分频
-module clock(clr,clk_in,clk_out);
-	input clr,clk_in;
-	output reg clk_out;
-	integer count;
-	initial
-	begin
-		count=0;
-		clk_out=0;
-	end
-	always@(posedge clr or posedge clk_in)
-	begin
-		if(clr)
-			begin
-				count=0;
-				clk_out<=0;
-			end
-		else
-			begin//25mhz
-				if(count==12500000)//0.5s
-					begin
-						count=0;
-						clk_out<=~clk_out;
-					end
-				else
-					count=count+1;
-			end
-	end
-endmodule
+
 
 module Light(clk,clr,start,stopa,stopb,pause,r1,g1,y1,r2,g2,y2,Data);
 	input clk,clr,start,stopa,stopb,pause;
@@ -140,9 +112,9 @@ endmodule
 // 	reg [15:0] temp;
 // 	always@(*)
 // 	begin
-// 		if(in==16'b1010101010101010)
+// 		if(in==16'b10101010-10101010)
 // 			out=in;
-// 		else if(in==16'b1011101110111011)
+// 		else if(in==16'b10111011-10111011)
 // 			out=in;
 // 		else
 // 			begin
@@ -219,5 +191,33 @@ endmodule
 // 				AN<=4'b1011;
 // 				end
 // 		endcase
+// 	end
+// endmodule//分频
+// module clock(clr,clk_in,clk_out);
+// 	input clr,clk_in;
+// 	output reg clk_out;
+// 	integer count;
+// 	initial
+// 	begin
+// 		count=0;
+// 		clk_out=0;
+// 	end
+// 	always@(posedge clr or posedge clk_in)
+// 	begin
+// 		if(clr)
+// 			begin
+// 				count=0;
+// 				clk_out<=0;
+// 			end
+// 		else
+// 			begin//25mhz
+// 				if(count==12500000)//0.5s
+// 					begin
+// 						count=0;
+// 						clk_out<=~clk_out;
+// 					end
+// 				else
+// 					count=count+1;
+// 			end
 // 	end
 // endmodule
