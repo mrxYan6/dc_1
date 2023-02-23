@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v"
 
 module button(input clk,input X,output Y);
     reg [2:0]ST;
