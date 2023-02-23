@@ -37,7 +37,7 @@ endmodule
 
 
 module show(data,seletct,AN,seg);
-    input [3:0]data;s
+    input [3:0]data;
     input [2:0]seletct;
     output reg[7:0]AN;
     output reg [7:0]seg;
