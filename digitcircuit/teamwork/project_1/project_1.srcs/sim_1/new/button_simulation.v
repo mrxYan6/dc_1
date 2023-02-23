@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/ajxd.v"
 module button_sim;
 	reg	CP,IN;
 	wire OUT;
@@ -7,13 +6,13 @@ module button_sim;
 	
 	initial begin
 
-		$display("start simu");    // 打印开始标记
-        $dumpfile("button_wave.vcd");              // 指定记录模拟波形的文件
-        $dumpvars(0, button_sim);          // 指定记录的模块层级
+		$display("start simu");    // 打印�?始标�?
+        $dumpfile("button_wave.vcd");              // 指定记录模拟波形的文�?
+        $dumpvars(0, button_sim);          // 指定记录的模块层�?
 		CP = 1;
 		IN = 0;   
         #6000
-		$display("end simu");    // 打印开始标记
+		$display("end simu");    // 打印�?始标�?
 		$finish;      
 	end 
 

@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`include "../../sources_1/new/Translator.v"
 
 module simulation_decoder();
     
@@ -9,8 +8,8 @@ module simulation_decoder();
     decoder utt(bin,ans);
 
     initial begin
-        $display("start");                  // 打印开始标记
-        $dumpfile("decoder_wave.vcd");              // 指定记录模拟波形的文件
+        $display("start");                  // 打印�?始标�?
+        $dumpfile("decoder_wave.vcd");              // 指定记录模拟波形的文�?
         $dumpvars(0, simulation_decoder);
         bin = 0;
         #6000 $finish;                      // 6000个单位时间后结束模拟
