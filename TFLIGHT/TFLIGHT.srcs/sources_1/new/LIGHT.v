@@ -1,12 +1,10 @@
 `timescale 1ns / 1ps
-// `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Fdiv.v"
-//`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Tube.v"
-//`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Translator.v"
+
 module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
-    input CLK,CLR,start,stopa,stopb,pause;      //输入的变量，与书本一�??
-    output [2:0] MainLight,SubLight;            //输出的主次红绿灯状�?�，高位到低位依次表示红黄绿
-    output [7:0] AN;                            //数码管位�??
-    output [7:0] Seg;                           //数码管段�??
+    input CLK,CLR,start,stopa,stopb,pause;      //输入的变量，与书本一致
+    output [2:0] MainLight,SubLight;            //输出的主次红绿灯状态，高位到低位依次表示红黄绿
+    output [3:0] AN;                            //数码管位选
+    output [7:0] Seg;                           //数码管段选
     wire [15:0] Data;
 
     // button b1(CLK,CLR,clr);
@@ -22,9 +20,10 @@ module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
 	scan_data show (1'b1,data_out,CLK,AN,Seg);
 endmodule
 
-module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,Data);
-    input clk_1s,CLR,start,stopa,stopb,pause;   //输入的变量，与书本一�??
-    output reg[2:0] MainLight,SubLight;         //输出的主次红绿灯状�?�，高位到低位依次表示红黄绿
+
+module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
+    input clk_1s,CLR,start,stopa,stopb,pause;   //输入的变量，与书本一致
+    output reg[2:0] MainLight,SubLight;         //输出的主次红绿灯状态，高位到低位依次表示红黄绿
 	//output reg [7:0] data_main,data_sub;        
     reg [6:0] clock;
 	output reg [15:0] Data;
@@ -50,7 +49,7 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,Data);
         end else if(pause)begin                     //pause
             clock <= clock;
             status <= 3;
-        end else if(start)begin
+        end else if(start)begin                     
             status <= 3;
             if(clock == 1)begin
                 clock <= 70;
