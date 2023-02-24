@@ -71,13 +71,12 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 3
-set_param synth.incrementalSynthesisCache C:/Users/LAYSKY/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-33396-LAPTOP-IKSDAQTG/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/LAYSKY/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-14716-LAPTOP-IKSDAQTG/incrSyn
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xc7a100ticsg324-1L
+create_project -in_memory -part xc7a100tcsg324-2L
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -113,7 +112,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top Clock -part xc7a100ticsg324-1L
+synth_design -top Clock -part xc7a100tcsg324-2L
 OPTRACE "synth_design" END { }
 
 

@@ -44,7 +44,7 @@ module show(data,seletct,AN,seg);
             1:AN = 4'b1101;
             2:AN = 4'b1011;
             3:AN = 4'b0111;
-            default: AN = 4'Hff;
+            default: AN = 4'hf;
         endcase
     end
 

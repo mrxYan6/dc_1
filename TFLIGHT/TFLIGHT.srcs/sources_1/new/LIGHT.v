@@ -14,7 +14,7 @@ module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
 	Light light (clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
 	decoder bin_bcd1 (data_main,data_out[15:8]);
 	decoder bin_bcd2 (data_sub,data_out[7:0]);
-	scan_data show (reset,data_out,clk,AN,Seg);
+	scan_data show (reset,data_out,CLK,AN,Seg);
 endmodule
 
 module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);

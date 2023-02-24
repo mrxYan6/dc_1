@@ -1,11 +1,11 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Fri Feb 24 16:02:38 2023
+| Date         : Fri Feb 24 16:31:38 2023
 | Host         : LAPTOP-IKSDAQTG running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Clock_utilization_synth.rpt -pb Clock_utilization_synth.pb
 | Design       : Clock
-| Device       : 7a100ticsg324-1L
+| Device       : 7a100tcsg324-2L
 | Design State : Synthesized
 -----------------------------------------------------------------------------------------------------
 
