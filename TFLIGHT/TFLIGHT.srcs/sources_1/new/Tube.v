@@ -7,7 +7,7 @@ module scan_data(reset,data,clk,an,seg);
     input clk;
     input [15:0]data;
     wire clk_5ms;
-    reg [1:0]select=0;
+    reg [1:0] select = 0;
     Fdiv utt(reset,32'd5,clk,clk_5ms);
 
     always @(posedge clk_5ms or posedge reset) begin

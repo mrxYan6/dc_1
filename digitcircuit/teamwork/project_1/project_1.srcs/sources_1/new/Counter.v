@@ -10,7 +10,7 @@ module Counter(RST,LD,EN,CP,LMT,D,Q,CO);
     initial begin Q <= 4'b0000;end
 
     always @(posedge RST or posedge CP or posedge LD) begin
-        if(RST)begin
+        if(!RST)begin
             Q <= 0;
             CO <= 0;
         end else if(LD)begin

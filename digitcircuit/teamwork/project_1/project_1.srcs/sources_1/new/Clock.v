@@ -1,21 +1,23 @@
 `timescale 1ns / 1ps
-
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Translator.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Counter.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Tube.v"
 module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
-    input CLK;          //输入的时钟信�?
+    input CLK;          //输入的时钟信�?
     input reset;        //清零（按钮）
-    input EN;           //是否�?�?
-    input TYPEe;         //显示及设置模式（�?关）
-    input NEXT_CP_ini;  //设置时下�?个（按钮�?
-    input SET;          //是否为输入模式（�?关）
-    input MODIFY;       //输入模式时确定输�?
-    input [7:0]IN;      //输入的数字（�?关）
+    input EN;           //是否�?�?
+    input TYPEe;         //显示及设置模式（�?关）
+    input NEXT_CP_ini;  //设置时下�?个（按钮�?
+    input SET;          //是否为输入模式（�?关）
+    input MODIFY;       //输入模式时确定输�?
+    input [7:0]IN;      //输入的数字（�?关）
     output TMP;
-    output [7:0]AN;     //输出的数码管使能端信�?
+    output [7:0]AN;     //输出的数码管使能端信�?
     output [7:0]SEG;    //输出的数码管信号
     output [7:0]alert;  //灯，表示闹钟到了
 
-    //mode0：时�? w-hhmmss
-    //mode1：闹�? -hh--mm-
+    //mode0：时�? w-hhmmss
+    //mode1：闹�? -hh--mm-
     reg [7:0]hour,minute,second,weekday,hour_alarm,minute_alarm;
 
     reg [1:0]MODE0;     //00->ss,01->mm,10->hh,11->w
@@ -31,9 +33,9 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     reg  [1:0]LD2;
    
 
-    Fdiv div1s(rst,32'd50000000,CLK,CP_1S);
-    Fdiv div500ms(rst,32'd25000000,CLK,CP_500MS);
-    Fdiv div100ms(rst,32'd5000000,CLK,CP_100MS);
+    Fdiv div1s(rst,32'd50,CLK,CP_1S);
+    Fdiv div500ms(rst,32'd25,CLK,CP_500MS);
+    Fdiv div100ms(rst,32'd1,CLK,CP_100MS);
 
     assign TMP=rst;
     assign NEXT_CP = NEXT_CP_ini;
@@ -50,7 +52,7 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     Counter hou(rst,LD[2],EN,CO2,8'd24,IN,hour_now,CO3);
     Counter week(rst,LD[3],EN,CO3,8'd7,IN,weekday_now, );
 
-    //不进�?
+    //不进�?
     Counter h_a(rst,LD2[1],EN, ,8'd24,IN,hour_alarm_now, );
     Counter m_a(rst,LD2[0],EN, ,8'd60,IN,minute_alarm_now, );
 
@@ -86,10 +88,10 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     wire [7:0] ori;
 
     always @(posedge SET or posedge NEXT_CP)begin
-        if(SET)begin
+        if(!SET)begin
             MODE0 <= 0;
             MODE1 <= 0;
-        end else if(!MODIFY) begin
+        end else if(MODIFY) begin
             if(TYPE)MODE1 <= MODE1 + 1;
             else MODE0 <= MODE0 + 1;
         end else begin
@@ -112,7 +114,7 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
         end
     end
 
-    //辅助产生位�?�信�?
+    //辅助产生位�?�信�?
     assign ori =   TYPE ?
                 (MODE0 == 0) ?  8'b00000011
                 :(MODE0 == 1) ?  8'b00001100
@@ -127,7 +129,7 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
 
 
     assign AN = SET & CP_500MS ? an | ori: an;
-    //如果在set状�?�，500ms闪烁�?次，通过屎能信号来实�?
+    //如果在set状�?�，500ms闪烁�?次，通过屎能信号来实�?
 
     
 endmodule
