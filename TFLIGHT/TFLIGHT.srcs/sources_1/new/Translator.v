@@ -10,8 +10,9 @@ module decoder(in,out);
     integer i = 0;
     always@(*)begin
         if(prev_in[7:0] != in[7:0])begin
-            if(in == 8'b10101010 || 8 == 8'hff)else begin  //阻塞或者不显示的时候不进行译码
-			    out = in;
+            if(in == 8'b10101010 || in == 8'hff) begin     //阻塞或不显示的时候不进行译码
+                out = in;
+                prev_in = in;
             end else begin
                 out = in;
                 tmp = {8'b0,in};

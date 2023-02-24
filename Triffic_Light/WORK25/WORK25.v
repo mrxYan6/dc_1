@@ -14,9 +14,6 @@ module WORK25(clk,clr,start,stopa,stopb,pause,r1,g1,y1,r2,g2,y2,AN,Seg);
 	scan_data show (reset,Data_out,clk,AN,Seg);
 endmodule
 
-
-
-
 module Light(clk,clr,start,stopa,stopb,pause,r1,g1,y1,r2,g2,y2,Data);
 	input clk,clr,start,stopa,stopb,pause;
 	output reg r1,g1,y1,r2,g2,y2;

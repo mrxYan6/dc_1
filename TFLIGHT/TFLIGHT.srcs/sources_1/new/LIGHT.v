@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2023/02/23 18:28:29
-// Design Name: 
-// Module Name: LIGHT
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
     input CLK,CLR,start,stopa,stopb,pause;      //输入的变量，与书本一致
@@ -44,7 +24,7 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
     reg [7:0] clock;
 
     initial begin
-        Data <= 16'b1010101010101010;
+        {data_main,data_sub} <= 16'b1010101010101010;
         clock <= 8'd70;
         MainLight <= 0;
         SubLight <= 0;
@@ -83,7 +63,7 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
                 data_main <= 8'd5;
                 data_sub <= data_sub - 1;
             end else if(clock == 30)begin           //status3
-                clock <= clock - 1;
+                clockss <= clock - 1;
                 MainLight <= 3'b100;
                 SubLight <= 3'b001;
                 data_main <= 8'd30;
@@ -106,7 +86,4 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
             end
         end
     end
-
-
-
 endmodule
