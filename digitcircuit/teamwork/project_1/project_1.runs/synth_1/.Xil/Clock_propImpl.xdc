@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:D:/OneDrive/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/constrs_1/new/CLK_HCS.xdc rfile:../../../project_1.srcs/constrs_1/new/CLK_HCS.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Users/LAYSKY/VSCode/DC_1/digitcircuit/teamwork/project_1/project_1.srcs/constrs_1/new/CLK_HCS.xdc rfile:../../../project_1.srcs/constrs_1/new/CLK_HCS.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
 //CLK
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
