@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-
+// `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Fdiv.v"
 module scan_data(reset,data,clk,an,seg);
     output [3:0]an;
     output [7:0]seg;
@@ -7,8 +7,8 @@ module scan_data(reset,data,clk,an,seg);
     input clk;
     input [15:0]data;
     wire clk_5ms;
-    reg [1:0]select;
-    Fdiv utt(reset,32'd50000,clk,clk_5ms);
+    reg [1:0]select=0;
+    Fdiv utt(reset,32'd5,clk,clk_5ms);
 
     always @(posedge clk_5ms or posedge reset) begin
         if(!reset)begin
@@ -44,7 +44,7 @@ module show(data,seletct,AN,seg);
             1:AN = 4'b1101;
             2:AN = 4'b1011;
             3:AN = 4'b0111;
-            default: AN = 4'Hff;
+            default: AN = 4'Hf;
         endcase
     end
 
