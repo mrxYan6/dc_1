@@ -1,17 +1,22 @@
 `timescale 1ns / 1ps
-
+// `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Fdiv.v"
+// `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Tube.v"
+// `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Translator.v"
 module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
     input CLK,CLR,start,stopa,stopb,pause;      //输入的变量，与书本一�?
     output [2:0] MainLight,SubLight;            //输出的主次红绿灯状�?�，高位到低位依次表示红黄绿
     output [3:0] AN;                            //数码管位�?
     output [7:0] Seg;                           //数码管段�?
     
+    wire clr;
+    // button b1(CLK,CLR,clr);
+
     wire [7:0]data_main,data_sub;
     wire [15:0]data_out;
     wire clk_1s;
     
-    Fdiv div (CLR,32'd12500000,CLK,clk_1s);
-	Light light (clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
+    Fdiv div (clr,32'd12500000,CLK,clk_1s);
+	Light light (clk_1s,clr,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
 	decoder bin_bcd1 (data_main,data_out[15:8]);
 	decoder bin_bcd2 (data_sub,data_out[7:0]);
 	scan_data show (reset,data_out,CLK,AN,Seg);
