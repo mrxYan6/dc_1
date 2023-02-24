@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
-
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Translator.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Counter.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Tube.v"
 module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     input CLK;          //输入的时钟信�?
     input reset;        //清零（按钮）
@@ -31,9 +33,9 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     reg  [1:0]LD2;
    
 
-    Fdiv div1s(rst,32'd50000000,CLK,CP_1S);
-    Fdiv div500ms(rst,32'd25000000,CLK,CP_500MS);
-    Fdiv div100ms(rst,32'd5000000,CLK,CP_100MS);
+    Fdiv div1s(rst,32'd50,CLK,CP_1S);
+    Fdiv div500ms(rst,32'd25,CLK,CP_500MS);
+    Fdiv div100ms(rst,32'd1,CLK,CP_100MS);
 
     assign TMP=rst;
     assign NEXT_CP = ~NEXT_CP_ini;
@@ -86,10 +88,10 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     wire [7:0] ori;
 
     always @(posedge SET or posedge NEXT_CP)begin
-        if(SET)begin
+        if(!SET)begin
             MODE0 <= 0;
             MODE1 <= 0;
-        end else if(!MODIFY) begin
+        end else if(MODIFY) begin
             if(TYPE)MODE1 <= MODE1 + 1;
             else MODE0 <= MODE0 + 1;
         end else begin

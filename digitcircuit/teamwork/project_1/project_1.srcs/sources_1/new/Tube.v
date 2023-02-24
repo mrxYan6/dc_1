@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v"
 module scan_data(reset,data,clk,an,seg);
     output [7:0]an;
     output [7:0]seg;
