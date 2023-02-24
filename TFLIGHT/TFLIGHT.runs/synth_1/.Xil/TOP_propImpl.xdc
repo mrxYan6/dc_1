@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc rfile:../../../TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc rfile:../../../TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:14 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN P14 [get_ports {AN[0]}]
 set_property src_info {type:XDC file:1 line:15 export:INPUT save:INPUT read:READ} [current_design]

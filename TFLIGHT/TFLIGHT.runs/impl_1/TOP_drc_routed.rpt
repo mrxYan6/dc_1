@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Fri Feb 24 18:40:29 2023
-| Host         : LAPTOP-IKSDAQTG running 64-bit major release  (build 9200)
+| Date         : Fri Feb 24 20:59:50 2023
+| Host         : mrxlaptop running 64-bit major release  (build 9200)
 | Command      : report_drc -file TOP_drc_routed.rpt -pb TOP_drc_routed.pb -rpx TOP_drc_routed.rpx
 | Design       : TOP
 | Device       : xc7a100tcsg324-1
@@ -24,12 +24,13 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 8
+             Violations found: 6
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153 | Warning  | Gated clock check                                   | 7          |
+| IOSR-1   | Warning  | IOB set reset sharing                               | 1          |
+| PDRC-153 | Warning  | Gated clock check                                   | 4          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -47,39 +48,29 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
 Refer to the device configuration user guide for more information.
 Related violations: <none>
 
+IOSR-1#1 Warning
+IOB set reset sharing  
+IO start connects to flops which have these light/status_reg[0]_LDC_i_2_n_0, light/status_reg[1]_LDC_i_2_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+Related violations: <none>
+
 PDRC-153#1 Warning
 Gated clock check  
-Net bin_bcd1/out_reg[7]_i_2_n_0 is a gated clock net sourced by a combinational pin bin_bcd1/out_reg[7]_i_2/O, cell bin_bcd1/out_reg[7]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net light/E[0] is a gated clock net sourced by a combinational pin light/out_reg[7]_i_2/O, cell light/out_reg[7]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#2 Warning
 Gated clock check  
-Net light/Data_reg[12]_LDC_i_1_n_0 is a gated clock net sourced by a combinational pin light/Data_reg[12]_LDC_i_1/O, cell light/Data_reg[12]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net light/status_reg[0]_C_1[0] is a gated clock net sourced by a combinational pin light/out_reg[7]_i_2__0/O, cell light/out_reg[7]_i_2__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#3 Warning
 Gated clock check  
-Net light/E[0] is a gated clock net sourced by a combinational pin light/out_reg[7]_i_2__0/O, cell light/out_reg[7]_i_2__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net light/status_reg[0]_LDC_i_1_n_0 is a gated clock net sourced by a combinational pin light/status_reg[0]_LDC_i_1/O, cell light/status_reg[0]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#4 Warning
 Gated clock check  
-Net light/MainLight_reg[2]_LDC_i_1_n_0 is a gated clock net sourced by a combinational pin light/MainLight_reg[2]_LDC_i_1/O, cell light/MainLight_reg[2]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#5 Warning
-Gated clock check  
-Net light/MainLight_reg[2]_LDC_i_2_n_0 is a gated clock net sourced by a combinational pin light/MainLight_reg[2]_LDC_i_2/O, cell light/MainLight_reg[2]_LDC_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#6 Warning
-Gated clock check  
-Net light/SubLight_reg[2]_LDC_i_1_n_0 is a gated clock net sourced by a combinational pin light/SubLight_reg[2]_LDC_i_1/O, cell light/SubLight_reg[2]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#7 Warning
-Gated clock check  
-Net light/SubLight_reg[2]_LDC_i_2_n_0 is a gated clock net sourced by a combinational pin light/SubLight_reg[2]_LDC_i_2/O, cell light/SubLight_reg[2]_LDC_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net light/status_reg[1]_LDC_i_1_n_0 is a gated clock net sourced by a combinational pin light/status_reg[1]_LDC_i_1/O, cell light/status_reg[1]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 

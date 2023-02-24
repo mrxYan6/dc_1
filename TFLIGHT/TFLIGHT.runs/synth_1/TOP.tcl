@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.runs/synth_1/TOP.tcl"
+  variable script "D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.runs/synth_1/TOP.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,31 +70,25 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 3
-set_param synth.incrementalSynthesisCache C:/Users/LAYSKY/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-21536-LAPTOP-IKSDAQTG/incrSyn
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.cache/wt [current_project]
-set_property parent.project_path C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.xpr [current_project]
+set_property webtalk.parent_dir D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.cache/wt [current_project]
+set_property parent.project_path D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.cache/ip [current_project]
+set_property ip_output_repo d:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Fdiv.v
-  C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Translator.v
-  C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Tube.v
-  C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/LIGHT.v
+  D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Fdiv.v
+  D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Translator.v
+  D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Tube.v
+  D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/LIGHT.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -105,8 +99,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc
-set_property used_in_implementation false [get_files C:/Users/LAYSKY/VSCode/DC_1/TFLIGHT/TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc]
+read_xdc D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc
+set_property used_in_implementation false [get_files D:/OneDrive/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/constrs_1/new/LIGHT_XDC.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
