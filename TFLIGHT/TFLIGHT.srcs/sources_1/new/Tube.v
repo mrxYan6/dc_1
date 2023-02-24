@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 // `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/TFLIGHT/TFLIGHT.srcs/sources_1/new/Fdiv.v"
 module scan_data(reset,data,clk,an,seg);
-    output [3:0]an;
+    output [7:0]an;
     output [7:0]seg;
     input reset;
     input clk;
@@ -35,15 +35,15 @@ endmodule
 module show(data,seletct,AN,seg);
     input [3:0]data;
     input [1:0]seletct;
-    output reg[3:0]AN;
+    output reg[7:0]AN;
     output reg [7:0]seg;
 
     always @(*) begin
         case(seletct) 
-            0:AN = 4'b1110;
-            1:AN = 4'b1101;
-            2:AN = 4'b1011;
-            3:AN = 4'b0111;
+            0:AN = 8'b11111110;
+            1:AN = 8'b11111101;
+            2:AN = 8'b11111011;
+            3:AN = 8'b11110111;
         endcase
     end
 

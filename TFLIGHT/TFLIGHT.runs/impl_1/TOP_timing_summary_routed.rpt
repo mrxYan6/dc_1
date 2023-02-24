@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Fri Feb 24 17:31:49 2023
+| Date         : Fri Feb 24 18:40:31 2023
 | Host         : LAPTOP-IKSDAQTG running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file TOP_timing_summary_routed.rpt -pb TOP_timing_summary_routed.pb -rpx TOP_timing_summary_routed.rpx -warn_on_violation
 | Design       : TOP
@@ -39,10 +39,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (243)
+1. checking no_clock (254)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (289)
+4. checking unconstrained_internal_endpoints (242)
 5. checking no_input_delay (5)
 6. checking no_output_delay (17)
 7. checking multiple_clock (0)
@@ -52,7 +52,7 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (243)
+1. checking no_clock (254)
 --------------------------
  There are 66 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
 
@@ -62,21 +62,25 @@ Table of Contents
 
  There are 3 register/latch pins with no clock driven by root clock pin: stopb (HIGH)
 
- There are 42 register/latch pins with no clock driven by root clock pin: div/clk_1K_reg/Q (HIGH)
+ There are 38 register/latch pins with no clock driven by root clock pin: div/clk_1K_reg/Q (HIGH)
 
- There are 15 register/latch pins with no clock driven by root clock pin: light/data_main_reg[6]_C/Q (HIGH)
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[10]/Q (HIGH)
 
- There are 30 register/latch pins with no clock driven by root clock pin: light/data_main_reg[6]_LDC/Q (HIGH)
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[12]_LDC/Q (HIGH)
 
- There are 15 register/latch pins with no clock driven by root clock pin: light/data_main_reg[6]_P/Q (HIGH)
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[14]/Q (HIGH)
 
- There are 15 register/latch pins with no clock driven by root clock pin: light/data_main_reg[7]/Q (HIGH)
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[15]/Q (HIGH)
 
- There are 15 register/latch pins with no clock driven by root clock pin: light/data_sub_reg[6]_C/Q (HIGH)
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[6]/Q (HIGH)
 
- There are 15 register/latch pins with no clock driven by root clock pin: light/data_sub_reg[6]_P/Q (HIGH)
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[7]/Q (HIGH)
 
- There are 15 register/latch pins with no clock driven by root clock pin: light/data_sub_reg[7]/Q (HIGH)
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[8]_C/Q (HIGH)
+
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[8]_P/Q (HIGH)
+
+ There are 15 register/latch pins with no clock driven by root clock pin: light/Data_reg[9]/Q (HIGH)
 
  There are 2 register/latch pins with no clock driven by root clock pin: show/utt/clk_1K_reg/Q (HIGH)
 
@@ -91,9 +95,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (289)
+4. checking unconstrained_internal_endpoints (242)
 --------------------------------------------------
- There are 289 pins that are not constrained for maximum delay. (HIGH)
+ There are 242 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 

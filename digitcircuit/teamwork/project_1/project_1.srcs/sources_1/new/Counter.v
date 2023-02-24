@@ -23,7 +23,7 @@ module Counter(RST,LD,EN,CP,LMT,D,Q,CO);
             end
         end else begin
             if(EN)begin            
-                if(Q + 1'b1 == LMT )begin
+                if(Q == LMT - 1'b1 )begin
                     Q <= 8'b0;
                     CO <= 1;
                 end else begin 

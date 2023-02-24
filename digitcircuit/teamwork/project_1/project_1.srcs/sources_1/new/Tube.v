@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
-`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v"
-module scan_data(reset,data,clk,an,seg);
-    output [7:0]an;
+//`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v"
+module scan_data(reset,data,clk,AN,seg);
+    output [7:0]AN;
     output [7:0]seg;
     input reset;
     input clk;
     input [31:0]data;
     wire clk_5ms;
-    reg [2:0]select;
+    reg [2:0]select = 0;
     Fdiv utt(reset,32'd50000,clk,clk_5ms);
 
     always @(posedge clk_5ms or posedge reset) begin
@@ -20,7 +20,7 @@ module scan_data(reset,data,clk,an,seg);
     end
 
     reg [3:0]data_in;
-    show sh(data_in,select,an,seg);
+    show sh(data_in,select,AN,seg);
     always @(*) begin
         case (select)
             7: data_in = data[31:28];
@@ -41,19 +41,18 @@ module show(data,seletct,AN,seg);
     input [2:0]seletct;
     output reg[7:0]AN;
     output reg [7:0]seg;
-    reg [7:0]an;
-
+ 
     always @(*) begin
         case(seletct) 
-            0:an = 8'b11111110;
-            1:an = 8'b11111101;
-            2:an = 8'b11111011;
-            3:an = 8'b11110111;
-            4:an = 8'b11101111;
-            5:an = 8'b11011111;
-            6:an = 8'b10111111;
-            7:an = 8'b01111111;
-            default: an = 8'Hff;
+            0:AN = 8'b11111110;
+            1:AN = 8'b11111101;
+            2:AN = 8'b11111011;
+            3:AN = 8'b11110111;
+            4:AN = 8'b11101111;
+            5:AN = 8'b11011111;
+            6:AN = 8'b10111111;
+            7:AN = 8'b01111111;
+            default: AN = 8'Hff;
         endcase
     end
 
