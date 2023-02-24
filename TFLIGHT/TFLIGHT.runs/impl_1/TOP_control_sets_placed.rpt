@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Fri Feb 24 13:30:40 2023
+| Date         : Fri Feb 24 15:59:14 2023
 | Host         : LAPTOP-IKSDAQTG running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file TOP_control_sets_placed.rpt
 | Design       : TOP
@@ -58,11 +58,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              11 |            4 |
+| No           | No                    | No                     |              11 |            3 |
 | No           | No                    | Yes                    |              41 |           14 |
 | No           | Yes                   | No                     |               5 |            5 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              22 |            8 |
+| Yes          | No                    | Yes                    |              22 |           12 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,20 +73,20 @@ Table of Contents
 +-------------------------------------+----------------------------+------------------------------------+------------------+----------------+--------------+
 |             Clock Signal            |        Enable Signal       |          Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------------------------+----------------------------+------------------------------------+------------------+----------------+--------------+
-|  light/MainLight_reg[2]_LDC_i_1_n_0 |                            | light/MainLight_reg[2]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
-|  light/SubLight_reg[2]_LDC_i_1_n_0  |                            | light/SubLight_reg[2]_LDC_i_2_n_0  |                1 |              1 |         1.00 |
 |  light/SubLight_reg[2]_LDC_i_2_n_0  |                            | light/SubLight_reg[2]_LDC_i_1_n_0  |                1 |              1 |         1.00 |
+|  light/SubLight_reg[2]_LDC_i_1_n_0  |                            | light/SubLight_reg[2]_LDC_i_2_n_0  |                1 |              1 |         1.00 |
+|  light/MainLight_reg[2]_LDC_i_1_n_0 |                            | light/MainLight_reg[2]_LDC_i_2_n_0 |                1 |              1 |         1.00 |
 |  light/MainLight_reg[2]_LDC_i_2_n_0 |                            | light/MainLight_reg[2]_LDC_i_1_n_0 |                1 |              1 |         1.00 |
 |  light/data_sub_reg[6]_LDC_i_1_n_0  |                            | CLR_IBUF                           |                1 |              1 |         1.00 |
-|  div/clk_1K_BUFG                    |                            | light/MainLight_reg[2]_LDC_i_1_n_0 |                1 |              2 |         2.00 |
-|  div/clk_1K_BUFG                    |                            | light/SubLight_reg[2]_LDC_i_1_n_0  |                1 |              2 |         2.00 |
 |  div/clk_1K_BUFG                    |                            | light/SubLight_reg[2]_LDC_i_2_n_0  |                1 |              2 |         2.00 |
-|  div/clk_1K_BUFG                    |                            | light/MainLight_reg[2]_LDC_i_2_n_0 |                2 |              2 |         1.00 |
+|  div/clk_1K_BUFG                    |                            | light/SubLight_reg[2]_LDC_i_1_n_0  |                2 |              2 |         1.00 |
+|  div/clk_1K_BUFG                    |                            | light/MainLight_reg[2]_LDC_i_1_n_0 |                1 |              2 |         2.00 |
+|  div/clk_1K_BUFG                    |                            | light/MainLight_reg[2]_LDC_i_2_n_0 |                1 |              2 |         2.00 |
 |  div/clk_1K_BUFG                    | light/MainLight[1]_i_1_n_0 | light/MainLight[1]_i_3_n_0         |                1 |              2 |         2.00 |
-|  div/clk_1K_BUFG                    | light/clock[7]_i_1_n_0     | light/data_sub_reg[6]_LDC_i_1_n_0  |                1 |              4 |         4.00 |
-|  div/clk_1K_BUFG                    | light/clock[7]_i_1_n_0     | CLR_IBUF                           |                1 |              4 |         4.00 |
-|  bin_bcd2/out_reg[3]_i_2_n_0        |                            |                                    |                4 |             11 |         2.75 |
-|  div/clk_1K_BUFG                    | light/clock[7]_i_1_n_0     | light/clock[7]_i_3_n_0             |                5 |             12 |         2.40 |
+|  div/clk_1K_BUFG                    | light/clock[7]_i_1_n_0     | CLR_IBUF                           |                3 |              4 |         1.33 |
+|  div/clk_1K_BUFG                    | light/clock[7]_i_1_n_0     | light/data_sub_reg[6]_LDC_i_1_n_0  |                2 |              4 |         2.00 |
+|  bin_bcd2/out_reg[3]_i_2_n_0        |                            |                                    |                3 |             11 |         3.67 |
+|  div/clk_1K_BUFG                    | light/clock[7]_i_1_n_0     | light/clock[7]_i_3_n_0             |                6 |             12 |         2.00 |
 |  CLK_IBUF_BUFG                      |                            | div/clk_1K_i_2_n_0                 |                9 |             33 |         3.67 |
 +-------------------------------------+----------------------------+------------------------------------+------------------+----------------+--------------+
 

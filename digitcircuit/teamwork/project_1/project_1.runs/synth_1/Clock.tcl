@@ -70,6 +70,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
+set_param synth.incrementalSynthesisCache C:/Users/LAYSKY/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-33396-LAPTOP-IKSDAQTG/incrSyn
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100ticsg324-1L
 
@@ -89,7 +95,6 @@ read_verilog -library xil_defaultlib {
   C:/Users/LAYSKY/VSCode/DC_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v
   C:/Users/LAYSKY/VSCode/DC_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Translator.v
   C:/Users/LAYSKY/VSCode/DC_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Tube.v
-  C:/Users/LAYSKY/VSCode/DC_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/ajxd.v
   C:/Users/LAYSKY/VSCode/DC_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Clock.v
 }
 OPTRACE "Adding files" END { }

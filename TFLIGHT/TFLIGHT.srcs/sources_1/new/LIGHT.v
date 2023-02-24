@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 
 module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
-    input CLK,CLR,start,stopa,stopb,pause;      //输入的变量，与书本一�?
-    output [2:0] MainLight,SubLight;            //输出的主次红绿灯状�?�，高位到低位依次表示红黄绿
-    output [3:0] AN;                            //数码管位�?
-    output [7:0] Seg;                           //数码管段�?
+    input CLK,CLR,start,stopa,stopb,pause;      //输入的变量，与书本一�?
+    output [2:0] MainLight,SubLight;            //输出的主次红绿灯状�?�，高位到低位依次表示红黄绿
+    output [3:0] AN;                            //数码管位�?
+    output [7:0] Seg;                           //数码管段�?
     
     wire [7:0]data_main,data_sub;
     wire [15:0]data_out;
@@ -18,8 +18,8 @@ module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
 endmodule
 
 module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
-    input clk_1s,CLR,start,stopa,stopb,pause;   //输入的变量，与书本一�?
-    output reg[2:0] MainLight,SubLight;         //输出的主次红绿灯状�?�，高位到低位依次表示红黄绿
+    input clk_1s,CLR,start,stopa,stopb,pause;   //输入的变量，与书本一�?
+    output reg[2:0] MainLight,SubLight;         //输出的主次红绿灯状�?�，高位到低位依次表示红黄绿
 	output reg [7:0] data_main,data_sub;        
     reg [7:0] clock;
 
@@ -36,12 +36,12 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
             clock <= 8'd70;
             MainLight <= 3'b100;                    
             SubLight <= 3'b100;
-        end else if(stopa)begin                     //主干道寄�?
+        end else if(stopa)begin                     //主干道寄�?
             {data_main,data_sub} <= 16'hffff;
             clock <= 8'd70;
             MainLight <= 3'b100;
             SubLight <= 3'b001;
-        end else if(stopb)begin                     //次干道寄�?
+        end else if(stopb)begin                     //次干道寄�?
             {data_main,data_sub} <= 16'hffff;
             clock <= 8'd70;
             MainLight <= 3'b001;
@@ -72,17 +72,17 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
                 clock <= clock - 1;
                 MainLight <= 3'b100;
                 SubLight <= 3'b010;
-                data_main <= data_main -1;
+                data_main <= data_main -8'd1;
                 data_sub <= 8'd5;
-            end else if(clock == 1)begin            //回到初始状�??
+            end else if(clock == 1)begin            //回到初始状�??
                 clock <= 70;
-                data_main <= data_main - 1;
-                data_sub <= data_sub - 1;
-            end else                                //中间状�??
+                data_main <= data_main - 8'd1;
+                data_sub <= data_sub - 1'd1;
+            end else                                //中间状�??
             begin
                 clock <= clock - 1;
-                data_main <= data_main - 1;
-                data_sub <= data_sub - 1;
+                data_main <= data_main - 8'd1;
+                data_sub <= data_sub - 8'd1;
             end
         end
     end

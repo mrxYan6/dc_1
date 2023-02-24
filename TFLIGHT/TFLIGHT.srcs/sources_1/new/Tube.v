@@ -12,10 +12,10 @@ module scan_data(reset,data,clk,an,seg);
 
     always @(posedge clk_5ms or posedge reset) begin
         if(!reset)begin
-            select <= 3'd0;
+            select <= 2'd0;
         end
         else begin
-            select <= select + 3'd1;
+            select <= select + 2'd1;
         end
     end
 
@@ -44,7 +44,7 @@ module show(data,seletct,AN,seg);
             1:AN = 4'b1101;
             2:AN = 4'b1011;
             3:AN = 4'b0111;
-            default: AN = 8'Hff;
+            default: AN = 4'Hff;
         endcase
     end
 

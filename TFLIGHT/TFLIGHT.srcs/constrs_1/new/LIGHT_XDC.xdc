@@ -11,7 +11,6 @@ set_property IOSTANDARD LVCMOS18 [get_ports {SubLight[1]}]
 set_property IOSTANDARD LVCMOS18 [get_ports {SubLight[0]}]
 
 
-
 set_property PACKAGE_PIN M17 [get_ports {AN[3]}]
 set_property PACKAGE_PIN J14 [get_ports {AN[2]}]
 set_property PACKAGE_PIN K13 [get_ports {AN[1]}]
@@ -59,3 +58,8 @@ set_property IOSTANDARD LVCMOS18 [get_ports pause]
 set_property IOSTANDARD LVCMOS18 [get_ports start]
 set_property IOSTANDARD LVCMOS18 [get_ports stopa]
 set_property IOSTANDARD LVCMOS18 [get_ports stopb]
+
+set_property SLEW SLOW [get_ports {AN[3]}]
+set_property SLEW SLOW [get_ports {AN[2]}]
+set_property SLEW SLOW [get_ports {AN[1]}]
+set_property SLEW SLOW [get_ports {AN[0]}]
