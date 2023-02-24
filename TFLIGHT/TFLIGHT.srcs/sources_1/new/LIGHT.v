@@ -15,11 +15,11 @@ module TOP(CLK,CLR,start,stopa,stopb,pause,MainLight,SubLight,AN,Seg);
     wire [15:0]data_out;
     wire clk_1s;
     
-    Fdiv div (clr,32'd12500000,CLK,clk_1s);
-	Light light (clk_1s,clr,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
+    Fdiv div (CLR,32'd12500000,CLK,clk_1s);
+	Light light (clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
 	decoder bin_bcd1 (data_main,data_out[15:8]);
 	decoder bin_bcd2 (data_sub,data_out[7:0]);
-	scan_data show (reset,data_out,CLK,AN,Seg);
+	scan_data show (CLR,data_out,CLK,AN,Seg);
 endmodule
 
 module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,data_sub);
@@ -36,7 +36,7 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
     end
 
     always@(posedge clk_1s or posedge CLR  or posedge stopa or posedge stopb or posedge pause)begin
-        if(CLR)begin                                //reset
+        if(!CLR)begin                                //reset
             {data_main,data_sub} <= 16'b1010101010101010;
             clock <= 8'd70;
             MainLight <= 3'b100;                    

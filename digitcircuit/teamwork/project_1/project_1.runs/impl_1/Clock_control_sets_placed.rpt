@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Fri Feb 24 16:32:15 2023
+| Date         : Fri Feb 24 16:58:23 2023
 | Host         : LAPTOP-IKSDAQTG running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Clock_control_sets_placed.rpt
 | Design       : Clock
@@ -73,111 +73,111 @@ Table of Contents
 +-------------------------------+---------------+------------------------------+------------------+----------------+--------------+
 |          Clock Signal         | Enable Signal |       Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------------------+---------------+------------------------------+------------------+----------------+--------------+
-|  h_a/Q_reg[2]_LDC_i_1__2_n_0  |               | h_a/Q_reg[2]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  LD_reg[3]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
-|  LD2_reg[0]_i_1_n_0           |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
-|  LD2_reg[1]_i_1_n_0           |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
-|  LD_reg[0]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
-|  LD_reg[1]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
-|  LD_reg[2]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
-|  sec/CO1                      | EN_IBUF       | minu/Q_reg[4]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
-|  sec/CO1                      | EN_IBUF       | minu/Q_reg[5]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
-|  sec/CO1                      | EN_IBUF       | minu/Q_reg[6]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
-|  sec/CO1                      | EN_IBUF       | minu/CO_i_2__0_n_0           |                1 |              1 |         1.00 |
-|  h_a/Q_reg[5]_LDC_i_1__2_n_0  |               | h_a/Q_reg[5]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  h_a/Q_reg[7]_LDC_i_1__2_n_0  |               | h_a/Q_reg[7]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  hou/CO3                      |               | week/Q_reg[0]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  h_a/Q_reg[6]_LDC_i_1__2_n_0  |               | h_a/Q_reg[6]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  h_a/Q_reg[4]_LDC_i_1__2_n_0  |               | h_a/Q_reg[4]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  h_a/Q_reg[0]_LDC_i_1__2_n_0  |               | h_a/Q_reg[0]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  h_a/Q_reg[3]_LDC_i_1__2_n_0  |               | h_a/Q_reg[3]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  h_a/Q_reg[1]_LDC_i_1__2_n_0  |               | h_a/Q_reg[1]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
-|  hou/CO3                      |               | week/Q_reg[5]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      |               | week/Q_reg[6]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
 |  hou/CO3                      |               | week/Q_reg[7]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  h_a/Q_reg[6]_LDC_i_1__2_n_0  |               | h_a/Q_reg[6]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  h_a/Q_reg[5]_LDC_i_1__2_n_0  |               | h_a/Q_reg[5]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  LD_reg[3]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
+|  h_a/Q_reg[2]_LDC_i_1__2_n_0  |               | h_a/Q_reg[2]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  h_a/Q_reg[3]_LDC_i_1__2_n_0  |               | h_a/Q_reg[3]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  h_a/Q_reg[7]_LDC_i_1__2_n_0  |               | h_a/Q_reg[7]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  h_a/Q_reg[0]_LDC_i_1__2_n_0  |               | h_a/Q_reg[0]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  h_a/Q_reg[1]_LDC_i_1__2_n_0  |               | h_a/Q_reg[1]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  h_a/Q_reg[4]_LDC_i_1__2_n_0  |               | h_a/Q_reg[4]_LDC_i_2__2_n_0  |                1 |              1 |         1.00 |
+|  hou/CO3                      |               | week/Q_reg[6]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
 |  hou/CO3                      |               | week/Q_reg[3]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      |               | week/Q_reg[1]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
 |  hou/CO3                      |               | week/Q_reg[2]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      |               | week/Q_reg[4]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  sec/CO1                      | EN_IBUF       | minu/Q_reg[1]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[5]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[1]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[4]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[0]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[7]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[6]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[2]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
-|  hou/CO3                      | EN_IBUF       | week/Q_reg[3]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
 |  hou/Q_reg[0]_LDC_i_1__0_n_0  |               | hou/Q_reg[0]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
+|  hou/CO3                      |               | week/Q_reg[5]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      |               | week/Q_reg[0]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      |               | week/Q_reg[4]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      |               | week/Q_reg[1]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[0]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[2]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[7]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[5]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[4]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[1]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[6]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  hou/CO3                      | EN_IBUF       | week/Q_reg[3]_LDC_i_1__1_n_0 |                1 |              1 |         1.00 |
+|  LD2_reg[0]_i_1_n_0           |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
 |  hou/Q_reg[1]_LDC_i_1__0_n_0  |               | hou/Q_reg[1]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
-|  hou/Q_reg[5]_LDC_i_1__0_n_0  |               | hou/Q_reg[5]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
-|  hou/Q_reg[7]_LDC_i_1__0_n_0  |               | hou/Q_reg[7]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  hou/Q_reg[3]_LDC_i_1__0_n_0  |               | hou/Q_reg[3]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
-|  hou/Q_reg[4]_LDC_i_1__0_n_0  |               | hou/Q_reg[4]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
-|  hou/Q_reg[2]_LDC_i_1__0_n_0  |               | hou/Q_reg[2]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
+|  hou/Q_reg[5]_LDC_i_1__0_n_0  |               | hou/Q_reg[5]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  hou/Q_reg[6]_LDC_i_1__0_n_0  |               | hou/Q_reg[6]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
-|  week/Q_reg[5]_LDC_i_1__1_n_0 |               | week/Q_reg[5]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  week/Q_reg[1]_LDC_i_1__1_n_0 |               | week/Q_reg[1]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  week/Q_reg[4]_LDC_i_1__1_n_0 |               | week/Q_reg[4]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  hou/Q_reg[7]_LDC_i_1__0_n_0  |               | hou/Q_reg[7]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
+|  hou/Q_reg[2]_LDC_i_1__0_n_0  |               | hou/Q_reg[2]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
+|  hou/Q_reg[4]_LDC_i_1__0_n_0  |               | hou/Q_reg[4]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  week/Q_reg[0]_LDC_i_1__1_n_0 |               | week/Q_reg[0]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  week/Q_reg[7]_LDC_i_1__1_n_0 |               | week/Q_reg[7]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  week/Q_reg[6]_LDC_i_1__1_n_0 |               | week/Q_reg[6]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
 |  week/Q_reg[2]_LDC_i_1__1_n_0 |               | week/Q_reg[2]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  week/Q_reg[7]_LDC_i_1__1_n_0 |               | week/Q_reg[7]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  week/Q_reg[5]_LDC_i_1__1_n_0 |               | week/Q_reg[5]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  week/Q_reg[4]_LDC_i_1__1_n_0 |               | week/Q_reg[4]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  week/Q_reg[1]_LDC_i_1__1_n_0 |               | week/Q_reg[1]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
+|  week/Q_reg[6]_LDC_i_1__1_n_0 |               | week/Q_reg[6]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
 |  week/Q_reg[3]_LDC_i_1__1_n_0 |               | week/Q_reg[3]_LDC_i_2__1_n_0 |                1 |              1 |         1.00 |
-|  sec/CO1                      | EN_IBUF       | minu/Q_reg[7]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
-|  m_a/Q_reg[5]_LDC_i_1__3_n_0  |               | m_a/Q_reg[5]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
+|  LD_reg[1]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
+|  m_a/Q_reg[4]_LDC_i_1__3_n_0  |               | m_a/Q_reg[4]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
+|  m_a/Q_reg[3]_LDC_i_1__3_n_0  |               | m_a/Q_reg[3]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
+|  m_a/Q_reg[2]_LDC_i_1__3_n_0  |               | m_a/Q_reg[2]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
 |  m_a/Q_reg[0]_LDC_i_1__3_n_0  |               | m_a/Q_reg[0]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
 |  m_a/Q_reg[1]_LDC_i_1__3_n_0  |               | m_a/Q_reg[1]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
-|  m_a/Q_reg[3]_LDC_i_1__3_n_0  |               | m_a/Q_reg[3]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
-|  m_a/Q_reg[4]_LDC_i_1__3_n_0  |               | m_a/Q_reg[4]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
-|  m_a/Q_reg[2]_LDC_i_1__3_n_0  |               | m_a/Q_reg[2]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
-|  m_a/Q_reg[7]_LDC_i_1__3_n_0  |               | m_a/Q_reg[7]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
+|  m_a/Q_reg[5]_LDC_i_1__3_n_0  |               | m_a/Q_reg[5]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
+|  LD2_reg[1]_i_1_n_0           |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
 |  m_a/Q_reg[6]_LDC_i_1__3_n_0  |               | m_a/Q_reg[6]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
+|  m_a/Q_reg[7]_LDC_i_1__3_n_0  |               | m_a/Q_reg[7]_LDC_i_2__3_n_0  |                1 |              1 |         1.00 |
 |  minu/Q_reg[0]_LDC_i_1_n_0    |               | minu/Q_reg[0]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  minu/Q_reg[3]_LDC_i_1_n_0    |               | minu/Q_reg[3]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  minu/Q_reg[2]_LDC_i_1_n_0    |               | minu/Q_reg[2]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
 |  minu/Q_reg[4]_LDC_i_1_n_0    |               | minu/Q_reg[4]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  minu/Q_reg[5]_LDC_i_1_n_0    |               | minu/Q_reg[5]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  minu/Q_reg[6]_LDC_i_1_n_0    |               | minu/Q_reg[6]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  minu/Q_reg[3]_LDC_i_1_n_0    |               | minu/Q_reg[3]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  minu/Q_reg[1]_LDC_i_1_n_0    |               | minu/Q_reg[1]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  minu/Q_reg[2]_LDC_i_1_n_0    |               | minu/Q_reg[2]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
 |  minu/CO2                     |               | hou/Q_reg[0]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     |               | hou/Q_reg[1]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
-|  minu/CO2                     |               | hou/Q_reg[7]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
+|  minu/CO2                     |               | hou/Q_reg[4]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     |               | hou/Q_reg[5]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     |               | hou/Q_reg[3]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
+|  minu/CO2                     |               | hou/Q_reg[7]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     |               | hou/Q_reg[6]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
-|  minu/CO2                     |               | hou/Q_reg[4]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     |               | hou/Q_reg[2]_LDC_i_2__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     | EN_IBUF       | hou/CO_i_2__1_n_0            |                1 |              1 |         1.00 |
 |  minu/CO2                     | EN_IBUF       | hou/Q_reg[0]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     | EN_IBUF       | hou/Q_reg[1]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
-|  minu/CO2                     | EN_IBUF       | hou/Q_reg[5]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
-|  minu/CO2                     | EN_IBUF       | hou/Q_reg[7]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     | EN_IBUF       | hou/Q_reg[3]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
-|  minu/CO2                     | EN_IBUF       | hou/Q_reg[4]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
-|  minu/CO2                     | EN_IBUF       | hou/Q_reg[2]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
+|  minu/CO2                     | EN_IBUF       | hou/Q_reg[5]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
 |  minu/CO2                     | EN_IBUF       | hou/Q_reg[6]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
-|  minu/Q_reg[1]_LDC_i_1_n_0    |               | minu/Q_reg[1]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  minu/CO2                     | EN_IBUF       | hou/Q_reg[7]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
+|  minu/CO2                     | EN_IBUF       | hou/Q_reg[2]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
+|  minu/CO2                     | EN_IBUF       | hou/Q_reg[4]_LDC_i_1__0_n_0  |                1 |              1 |         1.00 |
+|  minu/Q_reg[5]_LDC_i_1_n_0    |               | minu/Q_reg[5]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  minu/Q_reg[6]_LDC_i_1_n_0    |               | minu/Q_reg[6]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
 |  minu/Q_reg[7]_LDC_i_1_n_0    |               | minu/Q_reg[7]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
 |  sec/CO1                      |               | minu/Q_reg[3]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  sec/CO1                      |               | minu/Q_reg[4]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
 |  sec/CO1                      |               | minu/Q_reg[2]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  sec/CO1                      |               | minu/Q_reg[5]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  sec/CO1                      |               | minu/Q_reg[6]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
-|  sec/CO1                      |               | minu/Q_reg[0]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
 |  sec/CO1                      |               | minu/Q_reg[1]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      |               | minu/Q_reg[4]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      |               | minu/Q_reg[5]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      |               | minu/Q_reg[0]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      |               | minu/Q_reg[6]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
 |  sec/CO1                      |               | minu/Q_reg[7]_LDC_i_2_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      | EN_IBUF       | minu/CO_i_2__0_n_0           |                1 |              1 |         1.00 |
 |  sec/CO1                      | EN_IBUF       | minu/Q_reg[0]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      | EN_IBUF       | minu/Q_reg[4]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
 |  sec/CO1                      | EN_IBUF       | minu/Q_reg[3]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      | EN_IBUF       | minu/Q_reg[1]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
 |  sec/CO1                      | EN_IBUF       | minu/Q_reg[2]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      | EN_IBUF       | minu/Q_reg[5]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      | EN_IBUF       | minu/Q_reg[6]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
+|  sec/CO1                      | EN_IBUF       | minu/Q_reg[7]_LDC_i_1_n_0    |                1 |              1 |         1.00 |
+|  LD_reg[0]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
+|  LD_reg[2]_i_1_n_0            |               | LD2_reg[1]_i_2_n_0           |                1 |              1 |         1.00 |
 |  utt/utt/CLK                  |               | utt/utt/reset                |                2 |              3 |         1.50 |
-|  NEXT_CP_ini_IBUF_BUFG        |               | SET_IBUF                     |                2 |              3 |         1.50 |
+| ~NEXT_CP_ini_IBUF_BUFG        |               | SET_IBUF                     |                2 |              3 |         1.50 |
 |  div1s/CP_1S                  | EN_IBUF       | sec/Q[7]_i_2_n_0             |                3 |              9 |         3.00 |
 |  week/E[0]                    |               |                              |                3 |             11 |         3.67 |
-|  u1/BCD_reg[7]_i_2__0_n_0     |               |                              |                5 |             15 |         3.00 |
 |  h_a/E[0]                     |               |                              |                4 |             15 |         3.75 |
+|  u1/BCD_reg[7]_i_2__0_n_0     |               |                              |                5 |             15 |         3.00 |
 |  m_a/E[0]                     |               |                              |                5 |             15 |         3.00 |
-|  minu/E[0]                    |               |                              |                4 |             15 |         3.75 |
 |  sec/E[0]                     |               |                              |                4 |             15 |         3.75 |
+|  minu/E[0]                    |               |                              |                4 |             15 |         3.75 |
 |  CLK_IBUF_BUFG                |               | utt/utt/reset                |               26 |             99 |         3.81 |
 +-------------------------------+---------------+------------------------------+------------------+----------------+--------------+
 

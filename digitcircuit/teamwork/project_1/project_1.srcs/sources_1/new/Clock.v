@@ -36,7 +36,7 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     Fdiv div100ms(rst,32'd5000000,CLK,CP_100MS);
 
     assign TMP=rst;
-    assign NEXT_CP = NEXT_CP_ini;
+    assign NEXT_CP = ~NEXT_CP_ini;
     assign SURE=MODIFY;
     assign TYPE=TYPEe;
     assign rst=reset;
