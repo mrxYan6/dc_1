@@ -4,7 +4,7 @@ module Fdiv(input reset,input[31:0] mult,input clk_1M,output reg clk_1K);
     reg [31:0]counter;
     initial begin counter = 32'd0;end
     initial begin clk_1K = 0;end
-    always @(posedge clk_1M or posedge reset) begin
+    always @(posedge clk_1M or negedge reset) begin
         if(!reset)begin
                 counter <= 32'd0;
                 clk_1K <= 1'b0;

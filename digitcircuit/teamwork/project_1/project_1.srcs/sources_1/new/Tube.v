@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-//`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v"
 module scan_data(reset,data,clk,AN,seg);
     output [7:0]AN;
     output [7:0]seg;
@@ -10,7 +10,7 @@ module scan_data(reset,data,clk,AN,seg);
     reg [2:0]select = 0;
     Fdiv utt(reset,32'd50000,clk,clk_5ms);
 
-    always @(posedge clk_5ms or posedge reset) begin
+    always @(posedge clk_5ms or negedge reset) begin
         if(!reset)begin
             select <= 3'd0;
         end

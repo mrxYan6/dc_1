@@ -10,7 +10,7 @@ module scan_data(reset,data,clk,an,seg);
     reg [1:0] select = 0;
     Fdiv utt(reset,32'd50000,clk,clk_5ms);
 
-    always @(posedge clk_5ms or posedge reset) begin
+    always @(posedge clk_5ms or negedge reset) begin
         if(!reset)begin
             select <= 2'd0;
         end

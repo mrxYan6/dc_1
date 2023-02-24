@@ -36,7 +36,7 @@ module Light(clk_1s,CLR,start,stopa,stopb,pause,MainLight,SubLight,data_main,dat
 
     reg [1:0]status;
 
-    always@(posedge clk_1s or posedge CLR  or posedge stopa or posedge stopb or posedge pause)begin
+    always@(posedge clk_1s or negedge CLR  or posedge stopa or posedge stopb or posedge pause)begin
         if(!CLR)begin                                //reset
             clock <= 8'd70;
             status <= 0;

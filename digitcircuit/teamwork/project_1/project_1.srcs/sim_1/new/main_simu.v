@@ -2,9 +2,6 @@
 `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Clock.v"
 module ma_simu();
     
-    reg [7:0] bin;
-    wire [7:0] ans;
-
     // decoder utt(bin,ans);
     Clock utt(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     reg CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY;
@@ -19,15 +16,19 @@ module ma_simu();
         $display("start");          
         $dumpfile("main_wave.vcd");         
         $dumpvars(0, ma_simu);
-        bin = 0;
         CLK = 0;
         reset = 1;
         EN = 1;
-        TYPEe = 0;
-        NEXT_CP_ini = 0;
+        TYPEe = 1;
+        NEXT_CP_ini = 1;
         SET = 0;
-        MODIFY = 0;
-        #6000 $finish;                   
+        MODIFY = 1;
+
+        #50
+        reset = 0;
+        #50
+        reset=1;
+        #1000000 $finish;                   
     end
 
     always @(*)begin

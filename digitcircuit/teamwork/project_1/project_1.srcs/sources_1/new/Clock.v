@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
-//`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Translator.v"
-//`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Counter.v"
-//`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Tube.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Translator.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Counter.v"
+`include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Tube.v"
+// `include "/Users/mrx/Library/CloudStorage/OneDrive-个人/programing/digitcircuit/tmpt/dc_1/digitcircuit/teamwork/project_1/project_1.srcs/sources_1/new/Fdiv.v"
 module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     input CLK;          //输入的时钟信�??
     input reset;        //清零（按钮）
@@ -29,34 +30,34 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
 
     wire CP_1S,CP_500MS,CP_100MS;
     wire CO1,CO2,CO3,CO4;
-    wire rst,NEXT_CP,SURE,TYPE;
+    wire RST,NEXT_CP,SURE,TYPE;
     reg [3:0]LD;
     reg  [1:0]LD2;
     
-    assign TMP=rst;
+    assign TMP=RST;
     assign NEXT_CP = NEXT_CP_ini;
     assign SURE = MODIFY;
     assign TYPE = TYPEe;
-    assign rst = reset;
+    assign RST = reset;
 
-    Fdiv div1s(rst,32'd50000000,CLK,CP_1S);
-    Fdiv div500ms(rst,32'd25000000,CLK,CP_500MS);
-    Fdiv div100ms(rst,32'd12500000,CLK,CP_100MS);
+    Fdiv div1s(RST,32'd50000000,CLK,CP_1S);
+    Fdiv div500ms(RST,32'd25000000,CLK,CP_500MS);
+    Fdiv div100ms(RST,32'd12500000,CLK,CP_100MS);
 
     
-    // button but1(CP_100MS,reset,rst);
+    // button but1(CP_100MS,reset,RST);
     // button but2(CP_100MS,NEXT_ini,NEXT_CP);
     // button but3(CP_100MS,MODIFY,SURE);
     // button but4(CP_100MS,TYPEe,TYPE);
 
-    Counter sec(rst,LD[0],EN,CP_1S,8'd60,8'd0,second_now,CO1);
-    Counter minu(rst,LD[1],EN,CO1,8'd60,IN,minute_now,CO2);
-    Counter hou(rst,LD[2],EN,CO2,8'd24,IN,hour_now,CO3);
-    Counter week(rst,LD[3],EN,CO3,8'd7,IN,weekday_now, );
+    Counter sec(RST,LD[0],EN,CP_1S,8'd59,8'd0,second_now,CO1);
+    Counter minu(RST,LD[1],EN,CO1,8'd59,IN,minute_now,CO2);
+    Counter hou(RST,LD[2],EN,CO2,8'd23,IN,hour_now,CO3);
+    Counter week(RST,LD[3],EN,CO3,8'd6,IN,weekday_now, );
 
     //不进�??
-    Counter h_a(rst,LD2[1],EN, ,8'd24,IN,hour_alarm_now, );
-    Counter m_a(rst,LD2[0],EN, ,8'd60,IN,minute_alarm_now, );
+    Counter h_a(RST,LD2[1],EN, ,8'd23,IN,hour_alarm_now, );
+    Counter m_a(RST,LD2[0],EN, ,8'd59,IN,minute_alarm_now, );
 
 
     // Counter sec1(LD,EN,CP_1S,8'd60,second_now,8'b0,CO1);
@@ -78,11 +79,11 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
 
     wire [7:0] ori;
 
-    always @(posedge SET or posedge NEXT_CP)begin
+    always @(negedge SET or negedge NEXT_CP)begin
         if(!SET)begin
             MODE0 <= 0;
             MODE1 <= 0;
-        end else if(MODIFY) begin
+        end else if(SURE) begin
             if(!TYPE)begin 
                 MODE0 <= MODE0;
                 MODE1 <= MODE1 + 1;
@@ -101,9 +102,9 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
     always @(*)begin
         if(SET)begin
             if(!TYPE)begin
-                LD2[MODE1] = !MODIFY;
+                LD2[MODE1] = !SURE;
             end else begin
-                LD[MODE0] = !MODIFY;
+                LD[MODE0] = !SURE;
             end
         end else begin
             LD = 4'd0;
@@ -122,7 +123,7 @@ module Clock(CLK,reset,EN,TYPEe,NEXT_CP_ini,SET,MODIFY,IN,AN,SEG,alert,TMP);
 
 
     wire [7:0]an;
-    scan_data utt(rst,out,CLK,AN,SEG);
+    scan_data utt(RST,out,CLK,an,SEG);
 
 
     assign AN = SET & CP_500MS ? an | ori: an;
